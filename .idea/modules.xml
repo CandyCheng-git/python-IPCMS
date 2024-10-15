@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/python-IPCMS.iml" filepath="$PROJECT_DIR$/.idea/python-IPCMS.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/IPCMS.iml" filepath="$PROJECT_DIR$/.idea/IPCMS.iml" />
     </modules>
   </component>
 </project>
