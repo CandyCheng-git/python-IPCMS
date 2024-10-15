@@ -1,0 +1,733 @@
+[
+    {
+        "order_id": "PO0001",
+        "order_date": "21-08-2024",
+        "order_status": "Shipped",
+        "total_price": 2043.5,
+        "payment_method": "Credit Card",
+        "created_at": "2024-08-21 09:00:00",
+        "updated_at": "2024-09-01 12:00:00",
+        "customer_email": "johnsmith@gmail.com",
+        "order_products": [
+            {
+                "product_id": "002",
+                "product_name": "EMO Robot (Classic)",
+                "quantity": 3,
+                "price_per_unit": 389.98,
+                "total_price": 1169.94
+            },
+            {
+                "product_id": "003",
+                "product_name": "EMO Robot (Dream)",
+                "quantity": 2,
+                "price_per_unit": 436.78,
+                "total_price": 873.56
+            }
+        ]
+    },
+    {
+        "order_id": "PO0002",
+        "order_date": "25-08-2024",
+        "order_status": "Delivered",
+        "total_price": 3472.5,
+        "payment_method": "PayPal",
+        "created_at": "2024-08-25 10:30:00",
+        "updated_at": "2024-09-02 15:00:00",
+        "customer_email": "janedoe@yahoo.com",
+        "order_products": [
+            {
+                "product_id": "005",
+                "product_name": "Moxie Robot",
+                "quantity": 1,
+                "price_per_unit": 1246.44,
+                "total_price": 1246.44
+            },
+            {
+                "product_id": "004",
+                "product_name": "EMO Robot (Ultimate)",
+                "quantity": 1,
+                "price_per_unit": 514.78,
+                "total_price": 514.78
+            },
+            {
+                "product_id": "006",
+                "product_name": "ROYBI Robot",
+                "quantity": 3,
+                "price_per_unit": 310.44,
+                "total_price": 931.32
+            },
+            {
+                "product_id": "002",
+                "product_name": "EMO Robot (Classic)",
+                "quantity": 2,
+                "price_per_unit": 389.98,
+                "total_price": 779.96
+            }
+        ]
+    },
+    {
+        "order_id": "PO0003",
+        "order_date": "16-08-2024",
+        "order_status": "Shipped",
+        "total_price": 5458.38,
+        "payment_method": "Bank Transfer",
+        "created_at": "2024-08-16 09:30:00",
+        "updated_at": "2024-09-03 14:30:00",
+        "customer_email": "bjohnson@hotmail.com",
+        "order_products": [
+            {
+                "product_id": "007",
+                "product_name": "Aibo Robot",
+                "quantity": 1,
+                "price_per_unit": 4522.44,
+                "total_price": 4522.44
+            },
+            {
+                "product_id": "001",
+                "product_name": "EMO Robot (Lite)",
+                "quantity": 3,
+                "price_per_unit": 311.98,
+                "total_price": 935.94
+            }
+        ]
+    },
+    {
+        "order_id": "PO0004",
+        "order_date": "09-08-2024",
+        "order_status": "Delivered",
+        "total_price": 14971.24,
+        "payment_method": "Credit Card",
+        "created_at": "2024-08-09 11:45:00",
+        "updated_at": "2024-09-04 16:00:00",
+        "customer_email": "brobinson@duncan-wal",
+        "order_products": [
+            {
+                "product_id": "007",
+                "product_name": "Aibo Robot",
+                "quantity": 3,
+                "price_per_unit": 4522.44,
+                "total_price": 13567.32
+            },
+            {
+                "product_id": "002",
+                "product_name": "EMO Robot (Classic)",
+                "quantity": 2,
+                "price_per_unit": 389.98,
+                "total_price": 779.96
+            },
+            {
+                "product_id": "001",
+                "product_name": "EMO Robot (Lite)",
+                "quantity": 2,
+                "price_per_unit": 311.98,
+                "total_price": 623.96
+            }
+        ]
+    },
+    {
+        "order_id": "PO0005",
+        "order_date": "30-08-2024",
+        "order_status": "Pending",
+        "total_price": 9712.48,
+        "payment_method": "Credit Card",
+        "created_at": "2024-08-30 08:15:00",
+        "updated_at": "2024-09-05 09:10:00",
+        "customer_email": "sara11@ward.com",
+        "order_products": [
+            {
+                "product_id": "005",
+                "product_name": "Moxie Robot",
+                "quantity": 3,
+                "price_per_unit": 1246.44,
+                "total_price": 3739.32
+            },
+            {
+                "product_id": "001",
+                "product_name": "EMO Robot (Lite)",
+                "quantity": 2,
+                "price_per_unit": 311.98,
+                "total_price": 623.96
+            },
+            {
+                "product_id": "003",
+                "product_name": "EMO Robot (Dream)",
+                "quantity": 1,
+                "price_per_unit": 436.78,
+                "total_price": 436.78
+            },
+            {
+                "product_id": "007",
+                "product_name": "Aibo Robot",
+                "quantity": 1,
+                "price_per_unit": 4522.44,
+                "total_price": 4522.44
+            },
+            {
+                "product_id": "002",
+                "product_name": "EMO Robot (Classic)",
+                "quantity": 1,
+                "price_per_unit": 389.98,
+                "total_price": 389.98
+            }
+        ]
+    },
+    {
+        "order_id": "PO0006",
+        "order_date": "02-09-2024",
+        "order_status": "Shipped",
+        "total_price": 311.98,
+        "payment_method": "PayPal",
+        "created_at": "2024-09-02 10:00:00",
+        "updated_at": "2024-09-06 12:00:00",
+        "customer_email": "lhall@todd.com",
+        "order_products": [
+            {
+                "product_id": "001",
+                "product_name": "EMO Robot (Lite)",
+                "quantity": 1,
+                "price_per_unit": 311.98,
+                "total_price": 311.98
+            }
+        ]
+    },
+    {
+        "order_id": "PO0007",
+        "order_date": "05-09-2024",
+        "order_status": "Delivered",
+        "total_price": 1334.28,
+        "payment_method": "Credit Card",
+        "created_at": "2024-09-05 11:30:00",
+        "updated_at": "2024-09-07 14:20:00",
+        "customer_email": "tfowler@gmail.com",
+        "order_products": [
+            {
+                "product_id": "006",
+                "product_name": "ROYBI Robot",
+                "quantity": 2,
+                "price_per_unit": 310.44,
+                "total_price": 620.88
+            },
+            {
+                "product_id": "008",
+                "product_name": "The Wild Robot - Roz",
+                "quantity": 1,
+                "price_per_unit": 713.4,
+                "total_price": 713.4
+            }
+        ]
+    },
+    {
+        "order_id": "PO0008",
+        "order_date": "08-09-2024",
+        "order_status": "Pending",
+        "total_price": 779.96,
+        "payment_method": "Bank Transfer",
+        "created_at": "2024-09-08 09:15:00",
+        "updated_at": "2024-09-08 09:15:00",
+        "customer_email": "hmoore@gmail.com",
+        "order_products": [
+            {
+                "product_id": "002",
+                "product_name": "EMO Robot (Classic)",
+                "quantity": 2,
+                "price_per_unit": 389.98,
+                "total_price": 779.96
+            }
+        ]
+    },
+    {
+        "order_id": "PO0009",
+        "order_date": "10-09-2024",
+        "order_status": "Shipped",
+        "total_price": 436.78,
+        "payment_method": "Credit Card",
+        "created_at": "2024-09-10 14:45:00",
+        "updated_at": "2024-09-09 11:25:35",
+        "customer_email": "debbie75@kirby.com",
+        "order_products": [
+            {
+                "product_id": "003",
+                "product_name": "EMO Robot (Dream)",
+                "quantity": 1,
+                "price_per_unit": 436.78,
+                "total_price": 436.78
+            }
+        ]
+    },
+    {
+        "order_id": "PO0010",
+        "order_date": "12-09-2024",
+        "order_status": "Delivered",
+        "total_price": 310.44,
+        "payment_method": "PayPal",
+        "created_at": "2024-09-12 16:00:00",
+        "updated_at": "2024-09-10 08:32:17",
+        "customer_email": "jonesh@hotmail.com",
+        "order_products": [
+            {
+                "product_id": "006",
+                "product_name": "ROYBI Robot",
+                "quantity": 1,
+                "price_per_unit": 310.44,
+                "total_price": 310.44
+            }
+        ]
+    },
+    {
+        "order_id": "PO0011",
+        "order_date": "14-09-2024",
+        "order_status": "Pending",
+        "total_price": 514.78,
+        "payment_method": "Credit Card",
+        "created_at": "2024-09-14 10:00:00",
+        "updated_at": "2024-09-11 10:12:30",
+        "customer_email": "chrisg14@hotmail.com",
+        "order_products": [
+            {
+                "product_id": "004",
+                "product_name": "EMO Robot (Ultimate)",
+                "quantity": 1,
+                "price_per_unit": 514.78,
+                "total_price": 514.78
+            }
+        ]
+    },
+    {
+        "order_id": "PO0012",
+        "order_date": "16-09-2024",
+        "order_status": "Shipped",
+        "total_price": 935.94,
+        "payment_method": "PayPal",
+        "created_at": "2024-09-16 12:30:00",
+        "updated_at": "2024-09-12 09:45:00",
+        "customer_email": "bradleyhunt@morris-s",
+        "order_products": [
+            {
+                "product_id": "001",
+                "product_name": "EMO Robot (Lite)",
+                "quantity": 3,
+                "price_per_unit": 311.98,
+                "total_price": 935.94
+            }
+        ]
+    },
+    {
+        "order_id": "PO0013",
+        "order_date": "18-09-2024",
+        "order_status": "Delivered",
+        "total_price": 1246.44,
+        "payment_method": "Bank Transfer",
+        "created_at": "2024-09-18 15:45:00",
+        "updated_at": "2024-09-13 08:40:10",
+        "customer_email": "susan95@horton.com",
+        "order_products": [
+            {
+                "product_id": "005",
+                "product_name": "Moxie Robot",
+                "quantity": 1,
+                "price_per_unit": 1246.44,
+                "total_price": 1246.44
+            }
+        ]
+    },
+    {
+        "order_id": "PO0014",
+        "order_date": "20-09-2024",
+        "order_status": "Shipped",
+        "total_price": 623.96,
+        "payment_method": "Credit Card",
+        "created_at": "2024-09-20 14:20:00",
+        "updated_at": "2024-09-14 11:15:35",
+        "customer_email": "dennis50@hotmail.com",
+        "order_products": [
+            {
+                "product_id": "001",
+                "product_name": "EMO Robot (Lite)",
+                "quantity": 2,
+                "price_per_unit": 311.98,
+                "total_price": 623.96
+            }
+        ]
+    },
+    {
+        "order_id": "PO0015",
+        "order_date": "22-09-2024",
+        "order_status": "Delivered",
+        "total_price": 1472.14,
+        "payment_method": "PayPal",
+        "created_at": "2024-09-22 11:00:00",
+        "updated_at": "2024-09-15 09:10:00",
+        "customer_email": "pthompson@mitchell-w",
+        "order_products": [
+            {
+                "product_id": "008",
+                "product_name": "The Wild Robot - Roz",
+                "quantity": 2,
+                "price_per_unit": 713.4,
+                "total_price": 1426.8
+            },
+            {
+                "product_id": "002",
+                "product_name": "EMO Robot (Classic)",
+                "quantity": 1,
+                "price_per_unit": 389.98,
+                "total_price": 389.98
+            }
+        ]
+    },
+    {
+        "order_id": "PO0016",
+        "order_date": "24-09-2024",
+        "order_status": "Pending",
+        "total_price": 4522.44,
+        "payment_method": "Credit Card",
+        "created_at": "2024-09-24 13:45:00",
+        "updated_at": "2024-09-16 14:50:50",
+        "customer_email": "sabrinasmith@cross.b",
+        "order_products": [
+            {
+                "product_id": "007",
+                "product_name": "Aibo Robot",
+                "quantity": 1,
+                "price_per_unit": 4522.44,
+                "total_price": 4522.44
+            }
+        ]
+    },
+    {
+        "order_id": "PO0017",
+        "order_date": "26-09-2024",
+        "order_status": "Shipped",
+        "total_price": 389.98,
+        "payment_method": "PayPal",
+        "created_at": "2024-09-26 15:30:00",
+        "updated_at": "2024-09-17 09:35:50",
+        "customer_email": "pfitzgerald@yahoo.co",
+        "order_products": [
+            {
+                "product_id": "002",
+                "product_name": "EMO Robot (Classic)",
+                "quantity": 1,
+                "price_per_unit": 389.98,
+                "total_price": 389.98
+            }
+        ]
+    },
+    {
+        "order_id": "PO0018",
+        "order_date": "28-09-2024",
+        "order_status": "Delivered",
+        "total_price": 310.44,
+        "payment_method": "Bank Transfer",
+        "created_at": "2024-09-28 09:50:00",
+        "updated_at": "2024-09-18 10:40:30",
+        "customer_email": "jessica11@hotmail.co",
+        "order_products": [
+            {
+                "product_id": "006",
+                "product_name": "ROYBI Robot",
+                "quantity": 1,
+                "price_per_unit": 310.44,
+                "total_price": 310.44
+            }
+        ]
+    },
+    {
+        "order_id": "PO0019",
+        "order_date": "30-09-2024",
+        "order_status": "Pending",
+        "total_price": 847.22,
+        "payment_method": "Credit Card",
+        "created_at": "2024-09-30 11:15:00",
+        "updated_at": "2024-09-19 12:25:55",
+        "customer_email": "tonya67@durham.com",
+        "order_products": [
+            {
+                "product_id": "003",
+                "product_name": "EMO Robot (Dream)",
+                "quantity": 1,
+                "price_per_unit": 436.78,
+                "total_price": 436.78
+            },
+            {
+                "product_id": "001",
+                "product_name": "EMO Robot (Lite)",
+                "quantity": 1,
+                "price_per_unit": 311.98,
+                "total_price": 311.98
+            },
+            {
+                "product_id": "006",
+                "product_name": "ROYBI Robot",
+                "quantity": 1,
+                "price_per_unit": 310.44,
+                "total_price": 310.44
+            }
+        ]
+    },
+    {
+        "order_id": "PO0020",
+        "order_date": "02-10-2024",
+        "order_status": "Shipped",
+        "total_price": 311.98,
+        "payment_method": "PayPal",
+        "created_at": "2024-10-02 13:00:00",
+        "updated_at": "2024-09-20 16:45:30",
+        "customer_email": "yvonne35@hotmail.com",
+        "order_products": [
+            {
+                "product_id": "001",
+                "product_name": "EMO Robot (Lite)",
+                "quantity": 1,
+                "price_per_unit": 311.98,
+                "total_price": 311.98
+            }
+        ]
+    },
+    {
+        "order_id": "PO0021",
+        "order_date": "04-10-2024",
+        "order_status": "Delivered",
+        "total_price": 1521.52,
+        "payment_method": "Credit Card",
+        "created_at": "2024-10-04 14:45:00",
+        "updated_at": "2024-09-21 15:25:45",
+        "customer_email": "ystevenson@gmail.com",
+        "order_products": [
+            {
+                "product_id": "004",
+                "product_name": "EMO Robot (Ultimate)",
+                "quantity": 2,
+                "price_per_unit": 514.78,
+                "total_price": 1029.56
+            },
+            {
+                "product_id": "002",
+                "product_name": "EMO Robot (Classic)",
+                "quantity": 1,
+                "price_per_unit": 389.98,
+                "total_price": 389.98
+            },
+            {
+                "product_id": "006",
+                "product_name": "ROYBI Robot",
+                "quantity": 1,
+                "price_per_unit": 310.44,
+                "total_price": 310.44
+            }
+        ]
+    },
+    {
+        "order_id": "PO0022",
+        "order_date": "06-10-2024",
+        "order_status": "Pending",
+        "total_price": 713.4,
+        "payment_method": "PayPal",
+        "created_at": "2024-10-06 16:30:00",
+        "updated_at": "2024-09-22 14:50:30",
+        "customer_email": "sarahnguyen@miranda-",
+        "order_products": [
+            {
+                "product_id": "008",
+                "product_name": "The Wild Robot - Roz",
+                "quantity": 1,
+                "price_per_unit": 713.4,
+                "total_price": 713.4
+            }
+        ]
+    },
+    {
+        "order_id": "PO0023",
+        "order_date": "08-10-2024",
+        "order_status": "Shipped",
+        "total_price": 623.96,
+        "payment_method": "Credit Card",
+        "created_at": "2024-10-08 09:00:00",
+        "updated_at": "2024-09-23 10:12:20",
+        "customer_email": "david56@mclaughlin.c",
+        "order_products": [
+            {
+                "product_id": "001",
+                "product_name": "EMO Robot (Lite)",
+                "quantity": 2,
+                "price_per_unit": 311.98,
+                "total_price": 623.96
+            }
+        ]
+    },
+    {
+        "order_id": "PO0024",
+        "order_date": "10-10-2024",
+        "order_status": "Delivered",
+        "total_price": 389.98,
+        "payment_method": "PayPal",
+        "created_at": "2024-10-10 11:15:00",
+        "updated_at": "2024-09-24 12:35:00",
+        "customer_email": "zavalamason@hotmail.",
+        "order_products": [
+            {
+                "product_id": "002",
+                "product_name": "EMO Robot (Classic)",
+                "quantity": 1,
+                "price_per_unit": 389.98,
+                "total_price": 389.98
+            }
+        ]
+    },
+    {
+        "order_id": "PO0025",
+        "order_date": "12-10-2024",
+        "order_status": "Pending",
+        "total_price": 1246.44,
+        "payment_method": "Credit Card",
+        "created_at": "2024-10-12 13:30:00",
+        "updated_at": "2024-09-25 11:45:30",
+        "customer_email": "phyllis33@hotmail.co",
+        "order_products": [
+            {
+                "product_id": "005",
+                "product_name": "Moxie Robot",
+                "quantity": 1,
+                "price_per_unit": 1246.44,
+                "total_price": 1246.44
+            }
+        ]
+    },
+    {
+        "order_id": "PO0026",
+        "order_date": "14-10-2024",
+        "order_status": "Shipped",
+        "total_price": 2368.62,
+        "payment_method": "PayPal",
+        "created_at": "2024-10-14 15:45:00",
+        "updated_at": "2024-09-26 13:15:00",
+        "customer_email": "phancock@hill-delgad",
+        "order_products": [
+            {
+                "product_id": "005",
+                "product_name": "Moxie Robot",
+                "quantity": 1,
+                "price_per_unit": 1246.44,
+                "total_price": 1246.44
+            },
+            {
+                "product_id": "003",
+                "product_name": "EMO Robot (Dream)",
+                "quantity": 2,
+                "price_per_unit": 436.78,
+                "total_price": 873.56
+            },
+            {
+                "product_id": "006",
+                "product_name": "ROYBI Robot",
+                "quantity": 1,
+                "price_per_unit": 310.44,
+                "total_price": 310.44
+            }
+        ]
+    },
+    {
+        "order_id": "PO0027",
+        "order_date": "16-10-2024",
+        "order_status": "Delivered",
+        "total_price": 2335.94,
+        "payment_method": "Bank Transfer",
+        "created_at": "2024-10-16 17:00:00",
+        "updated_at": "2024-09-27 14:25:10",
+        "customer_email": "bhess@hawkins-herrer",
+        "order_products": [
+            {
+                "product_id": "007",
+                "product_name": "Aibo Robot",
+                "quantity": 1,
+                "price_per_unit": 4522.44,
+                "total_price": 2261.22
+            },
+            {
+                "product_id": "001",
+                "product_name": "EMO Robot (Lite)",
+                "quantity": 3,
+                "price_per_unit": 311.98,
+                "total_price": 935.94
+            }
+        ]
+    },
+    {
+        "order_id": "PO0028",
+        "order_date": "18-10-2024",
+        "order_status": "Pending",
+        "total_price": 826.76,
+        "payment_method": "Credit Card",
+        "created_at": "2024-10-18 09:15:00",
+        "updated_at": "2024-09-28 10:55:30",
+        "customer_email": "brandon84@ferguson.c",
+        "order_products": [
+            {
+                "product_id": "004",
+                "product_name": "EMO Robot (Ultimate)",
+                "quantity": 1,
+                "price_per_unit": 514.78,
+                "total_price": 514.78
+            },
+            {
+                "product_id": "006",
+                "product_name": "ROYBI Robot",
+                "quantity": 1,
+                "price_per_unit": 310.44,
+                "total_price": 310.44
+            }
+        ]
+    },
+    {
+        "order_id": "PO0029",
+        "order_date": "20-10-2024",
+        "order_status": "Shipped",
+        "total_price": 1646.16,
+        "payment_method": "PayPal",
+        "created_at": "2024-10-20 11:30:00",
+        "updated_at": "2024-09-29 11:30:15",
+        "customer_email": "anne89@barnes.com",
+        "order_products": [
+            {
+                "product_id": "006",
+                "product_name": "ROYBI Robot",
+                "quantity": 4,
+                "price_per_unit": 310.44,
+                "total_price": 1241.76
+            },
+            {
+                "product_id": "002",
+                "product_name": "EMO Robot (Classic)",
+                "quantity": 1,
+                "price_per_unit": 389.98,
+                "total_price": 389.98
+            }
+        ]
+    },
+    {
+        "order_id": "PO0030",
+        "order_date": "22-10-2024",
+        "order_status": "Delivered",
+        "total_price": 1646.16,
+        "payment_method": "Bank Transfer",
+        "created_at": "2024-10-22 13:45:00",
+        "updated_at": "2024-09-30 09:20:50",
+        "customer_email": "wdavis@hotmail.com",
+        "order_products": [
+            {
+                "product_id": "003",
+                "product_name": "EMO Robot (Dream)",
+                "quantity": 2,
+                "price_per_unit": 436.78,
+                "total_price": 873.56
+            },
+            {
+                "product_id": "008",
+                "product_name": "The Wild Robot - Roz",
+                "quantity": 1,
+                "price_per_unit": 713.4,
+                "total_price": 713.4
+            }
+        ]
+    }
+]
