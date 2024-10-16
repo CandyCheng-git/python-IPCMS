@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4f4b9552-bf3f-4955-a81d-d94533734368" name="Changes" comment="Updated ReadMe.md - Login as default admin How to Run the Project">
+    <list default="true" id="4f4b9552-bf3f-4955-a81d-d94533734368" name="Changes" comment="Updated unitest - test_charts.py">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/charts/charts.py" beforeDir="false" afterPath="$PROJECT_DIR$/charts/charts.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/controllers.py" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/controllers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_controllers.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_controllers.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,6 +50,8 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Python tests.Python tests in test_authentication.py.executor": "Run",
+    "Python tests.Python tests in test_charts.py.executor": "Run",
+    "Python tests.Python tests in test_controllers.py.executor": "Run",
     "Python.main.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main"
@@ -174,7 +177,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729048380468</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Updated unitest - test_charts.py">
+      <option name="closed" value="true" />
+      <created>1729050222626</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1729050222626</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -184,6 +195,7 @@
     <MESSAGE value="Deleted utility_operations.py" />
     <MESSAGE value="Updated test_authentication.py" />
     <MESSAGE value="Updated ReadMe.md - Login as default admin How to Run the Project" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated ReadMe.md - Login as default admin How to Run the Project" />
+    <MESSAGE value="Updated unitest - test_charts.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated unitest - test_charts.py" />
   </component>
 </project>
