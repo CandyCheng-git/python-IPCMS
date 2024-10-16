@@ -1,8 +1,6 @@
 from datetime import datetime
 import logging
 from models.models import Customer, Product, Order
-from utils.validators import CheckValidator
-
 
 
 class CustomerController:
@@ -93,7 +91,7 @@ class ProductController:
             updated_at,
     ):
         if price < 0:
-            print("Invalid price: Price cannot be negative.")
+            logging.error("Invalid price: Price cannot be negative.")
             return False
         product = Product(
             product_id,
@@ -157,7 +155,7 @@ class OrderController:
     ):
         for prd in order_products:
             if not self.product_manager.get_product_by_id(prd['product_id']):
-                print(f"Product {prd['product_id']} does not exist. Order creation cancelled.")
+                logging.error(f"Product {prd['product_id']} does not exist. Order creation cancelled.")
                 return None
         order = Order(
             order_id,

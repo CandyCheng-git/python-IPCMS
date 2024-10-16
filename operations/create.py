@@ -1,4 +1,5 @@
 # create.py
+import logging
 
 from utils.validators import CheckValidator
 from utils.transformers import DataTransformer
@@ -41,7 +42,7 @@ class CreateOperations:
 
         # Check
         if not self.validator.is_email(email) or self.customer_manager.get_customer_by_email(email):
-            print("Invalid email or customer already exists.")
+            logging.error("Invalid email or customer already exists.")
             return
         first_name = input("Enter first name: ")
         if not self.validator.is_alpha(first_name): return
@@ -59,11 +60,11 @@ class CreateOperations:
         if not self.validator.is_postcode(country, postcode, self.erp_data.full_served_countries): return
 
         # Confirm
-        print(
+        logging.info(
             f"\nConfirm customer info:\nEmail: {email}\nFirst Name: {first_name}\nLast Name: {last_name}\nDOB: {dob}"
             f"\nPhone: {phone}\nCountry: {country}\nCity: {city}\nPostcode: {postcode}")
         if input("Is this information correct? (y/n): ").strip().lower() != 'y':
-            print("Customer creation cancelled.")
+            logging.warning("Customer creation cancelled.")
             return
 
         created_at = updated_at = datetime.now().strftime(
@@ -74,9 +75,9 @@ class CreateOperations:
         try:
             self.customer_manager.create_customer(first_name, last_name, dob, email, phone, country, city, postcode,
                                                   created_at, updated_at)
-            print("Customer created successfully.")
+            logging.info("Customer created successfully.")
         except Exception as er_msg:
-            print("Error: creating customer:", str(er_msg))
+            logging.error("Error: creating customer:", str(er_msg))
 
 
     """ IP """
@@ -94,14 +95,14 @@ class CreateOperations:
                     break
 
             if not employee:
-                print("Employee not found.")
+                logging.error("Employee not found.")
                 return
 
             payslip_id = id(employee)
 
             for payslip in self.payslip_table:
                 if payslip["ID"] == payslip_id:
-                    print("Duplicate ID found, replacing the old payslip with the new one.")
+                    logging.warning("Duplicate ID found, replacing the old payslip with the new one.")
                     self.payslip_table.remove(payslip)
                     break
 
@@ -126,9 +127,9 @@ class CreateOperations:
             }
 
             self.payslip_table.append(new_payslip)
-            print("Payslip created successfully.")
+            logging.info("Payslip created successfully.")
             self.read_ops.display_payslip_details(new_payslip)
         else:
-            print("Employee not found.")
+            logging.error("Employee not found.")
             return
 

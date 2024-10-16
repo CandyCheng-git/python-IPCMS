@@ -47,7 +47,10 @@ class IPCMSApp:
         self.employee_data_with_constraints = self.IPCMS_data.employee_data_with_constraints
         self.victoria_tax_table = self.IPCMS_data.victoria_tax_table
         self.payslip_table = self.IPCMS_data.payslip_table
-        self.auth_service = AuthenticationService(self.employee_login_dict, self.employee_data_with_constraints)
+        self.auth_service = AuthenticationService(
+            self.employee_login_dict,
+            self.employee_data_with_constraints
+        )
 
         # Initialize operation modules
         self.chart_generator = ChartGenerator(self.customer_manager, self.order_manager)
@@ -69,13 +72,24 @@ class IPCMSApp:
             self.IPCMS_data
         )
 
-        self.update_ops = UpdateOperations(self.customer_manager, self.IPCMS_data)
+        self.update_ops = UpdateOperations(
+            self.customer_manager,
+            self.IPCMS_data
+        )
 
-        self.import_ops = ImportOperations(self.customer_manager, self.product_manager, self.order_manager,
-                                           self.IPCMS_data)
+        self.import_ops = ImportOperations(
+            self.customer_manager,
+            self.product_manager,
+            self.order_manager,
+            self.IPCMS_data
+        )
 
-        self.export_ops = ExportOperations(self.customer_manager, self.product_manager, self.order_manager,
-                                           self.IPCMS_data)
+        self.export_ops = ExportOperations(
+            self.customer_manager,
+            self.product_manager,
+            self.order_manager,
+            self.IPCMS_data
+        )
 
         self.report_generator = ReportGenerator(
             self.customer_manager,
@@ -90,7 +104,7 @@ class IPCMSApp:
             if self.auth_service.login_system():
                 self.menu_page()
             else:
-                print("Access denied.")
+                logging.error("Access denied.")
 
     def load_data(self):
         """Load data into controllers/managers."""
@@ -213,7 +227,7 @@ class IPCMSApp:
                 # Execute the corresponding method
                 menu_options[usr_chs][1]()
             else:
-                print("Invalid choice. Please try again.")
+                logging.error("Invalid choice. Please try again.")
 
     def menu_view_customers(self):
         while True:
@@ -225,7 +239,7 @@ class IPCMSApp:
                 elif action == 'delete':
                     self.delete_ops.delete_customer(customer)
                 else:
-                    print("No valid action selected.")
+                    logging.error("No valid action selected.")
             else:
                 break  # Exit the loop if no customer is selected
 

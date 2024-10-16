@@ -1,73 +1,14 @@
-from datetime import datetime
 from models.models import Customer, Product, Order
-import logging
-
 
 
 class EnterpriseData:
     """Load and store initial data from the shop."""
 
     def __init__(self):
-        self.col_widths = self.init_col_widths()
+        self.col_widths = IPCMSData().init_col_widths()
         self.customers = self.load_customers()
         self.products = self.load_products()
         self.orders = self.load_orders()
-
-    @staticmethod
-    def init_col_widths():
-        return {
-            'customers': {
-                "first_name": 12, "last_name": 12, "dob": 12, "email": 20,
-                "phone": 12, "country": 12, "city": 12, "postcode": 4,
-                "created_at": 19, "updated_at": 19,
-            },
-            'products': {
-                "product_id": 3, "product_name": 30, "price": 10,
-                "category": 10, "stock_quantity": 6, "created_at": 19,
-                "updated_at": 19,
-            },
-            'orders': {
-                "order_id": 6, "order_date": 10, "order_status": 10,
-                "total_price": 10, "order_products": {
-                    "product_id": 3, "product_name": 30, "quantity": 3,
-                    "price_per_unit": 10, "total_price": 10,
-                },
-                "payment_method": 20, "customer_email": 20,
-                "created_at": 19, "updated_at": 19,
-            },
-            'employee_login_dict': {
-                "EmployeeID": 10,
-                "Login Name": 8,
-                "Password": 8
-            },
-            'currency_conversion_table': {
-                "Country": 15,
-                "Curr Code": 10,
-                "Rate to AUD": 10
-            },
-            'employee_data_with_constraints': {
-                "EmployeeID": 10,
-                "Full Name": 20,
-                "Department": 20,
-                "Title": 20,
-                "Base Yearly Salary": 15,
-                "System Access Level": 5,
-                "Workstation Name": 10,
-                "Country": 15
-            },
-            'victoria_tax_table': {
-                "Income Range Min": 20,
-                "Income Range Max": 20,
-                "Tax Rate (%)": 15
-            },
-            'payslip_table': {
-                "ID": 20,
-                "EmployeeID": 10,
-                "Full Name": 20,
-                "Department": 20,
-                "Title": 20,
-            }
-        }
 
     def get_required_fields(self, category):
         if category in self.col_widths:
@@ -1178,12 +1119,29 @@ class IPCMSData:
         self.victoria_tax_table = self.load_victoria_tax_table()
         self.payslip_table = self.load_payslip_table()
 
-    def init_col_widths(self):
+    @staticmethod
+    def init_col_widths():
         """Initialize column widths for tables."""
         return {
-            'customers': self.enterprise_data.col_widths['customers'],
-            'products': self.enterprise_data.col_widths['products'],
-            'orders': self.enterprise_data.col_widths['orders'],
+            'customers': {
+                "first_name": 12, "last_name": 12, "dob": 12, "email": 20,
+                "phone": 12, "country": 12, "city": 12, "postcode": 4,
+                "created_at": 19, "updated_at": 19,
+            },
+            'products': {
+                "product_id": 3, "product_name": 30, "price": 10,
+                "category": 10, "stock_quantity": 6, "created_at": 19,
+                "updated_at": 19,
+            },
+            'orders': {
+                "order_id": 6, "order_date": 10, "order_status": 10,
+                "total_price": 10, "order_products": {
+                    "product_id": 3, "product_name": 30, "quantity": 3,
+                    "price_per_unit": 10, "total_price": 10,
+                },
+                "payment_method": 20, "customer_email": 20,
+                "created_at": 19, "updated_at": 19,
+            },
             'employee_login_dict': {
                 "EmployeeID": 10,
                 "Login Name": 8,
@@ -1237,7 +1195,8 @@ class IPCMSData:
 
         return full_served_countries
 
-    def load_employee_login_dict(self):
+    @staticmethod
+    def load_employee_login_dict():
         """Load employee login data."""
         return {
             100000: {"Login Name": "admin", "Password": "admin123"},
@@ -1263,7 +1222,8 @@ class IPCMSData:
             100020: {"Login Name": "myoung", "Password": "Qs7tP4Wm"}
         }
 
-    def load_currency_conversion_table(self):
+    @staticmethod
+    def load_currency_conversion_table():
         """Load currency conversion data."""
         return (
             {"Country": "Australia", "Curr Code": "AUD", "Rate to AUD": 1.0},
@@ -1274,33 +1234,224 @@ class IPCMSData:
             {"Country": "India", "Curr Code": "INR", "Rate to AUD": 55.3}
         )
 
-    def load_employee_data_with_constraints(self):
+    @staticmethod
+    def load_employee_data_with_constraints():
         """Load employee data with constraints."""
         return [
-            {"EmployeeID": 100000, "Full Name": "Admin User", "Department": "Administration", "Title": "Administrator", "Base Yearly Salary": 150000.00, "Country": "Australia", "System Access Level": "Admin", "Workstation Name": "WS-Admin"},
-            {"EmployeeID": 100001, "Full Name": "John Doe", "Department": "IT Department", "Title": "System Administrator", "Base Yearly Salary": 80000.23, "Country": "Australia", "System Access Level": "Admin", "Workstation Name": "WS-1001"},
-            {"EmployeeID": 100002, "Full Name": "Jane Smith", "Department": "HR Department", "Title": "HR Specialist", "Base Yearly Salary": 65000.75, "Country": "India", "System Access Level": "User", "Workstation Name": "WS-1002"},
-            {"EmployeeID": 100003, "Full Name": "Albert Johnson", "Department": "Finance Department", "Title": "Accountant", "Base Yearly Salary": 90000.50, "Country": "China", "System Access Level": "User", "Workstation Name": "WS-1003"},
-            {"EmployeeID": 100004, "Full Name": "Emily Brown", "Department": "Logistics Solution", "Title": "Flight Coordinator", "Base Yearly Salary": 78000.00, "Country": "Hong Kong", "System Access Level": "User", "Workstation Name": "WS-1004"},
-            {"EmployeeID": 100005, "Full Name": "Michael Davis", "Department": "Sales Department", "Title": "Sales Executive", "Base Yearly Salary": 85000.00, "Country": "Australia", "System Access Level": "User", "Workstation Name": "WS-1005"},
-            {"EmployeeID": 100006, "Full Name": "Sarah Wilson", "Department": "IT Department", "Title": "Developer", "Base Yearly Salary": 95000.00, "Country": "Vietnam", "System Access Level": "User", "Workstation Name": "WS-1006"},
-            {"EmployeeID": 100007, "Full Name": "Robert Lee", "Department": "HR Department", "Title": "HR Manager", "Base Yearly Salary": 110000.00, "Country": "Malaysia", "System Access Level": "Admin", "Workstation Name": "WS-1007"},
-            {"EmployeeID": 100008, "Full Name": "Jessica White", "Department": "Finance Department", "Title": "Payroll Specialist", "Base Yearly Salary": 67000.00, "Country": "India", "System Access Level": "User", "Workstation Name": "WS-1008"},
-            {"EmployeeID": 100009, "Full Name": "Daniel Taylor", "Department": "Logistics Solution", "Title": "Shipping Coordinator", "Base Yearly Salary": 76000.00, "Country": "China", "System Access Level": "User", "Workstation Name": "WS-1009"},
-            {"EmployeeID": 100010, "Full Name": "Amanda Thomas", "Department": "Sales Department", "Title": "Sales Associate", "Base Yearly Salary": 64000.00, "Country": "Australia", "System Access Level": "User", "Workstation Name": "WS-1010"},
-            {"EmployeeID": 100011, "Full Name": "Andrew Martin", "Department": "IT Department", "Title": "IT Manager", "Base Yearly Salary": 120000.00, "Country": "Hong Kong", "System Access Level": "Admin", "Workstation Name": "WS-1011"},
-            {"EmployeeID": 100012, "Full Name": "Megan Jackson", "Department": "HR Department", "Title": "HR Specialist", "Base Yearly Salary": 68000.00, "Country": "Vietnam", "System Access Level": "User", "Workstation Name": "WS-1012"},
-            {"EmployeeID": 100013, "Full Name": "William Harris", "Department": "Finance Department", "Title": "Finance Manager", "Base Yearly Salary": 130000.00, "Country": "Malaysia", "System Access Level": "Admin", "Workstation Name": "WS-1013"},
-            {"EmployeeID": 100014, "Full Name": "Olivia Robinson", "Department": "Logistics Solution", "Title": "Logistics Manager", "Base Yearly Salary": 115000.00, "Country": "China", "System Access Level": "Admin", "Workstation Name": "WS-1014"},
-            {"EmployeeID": 100015, "Full Name": "James Clark", "Department": "Sales Department", "Title": "Sales Manager", "Base Yearly Salary": 125000.00, "Country": "Vietnam", "System Access Level": "Admin", "Workstation Name": "WS-1015"},
-            {"EmployeeID": 100016, "Full Name": "Sophia Lewis", "Department": "IT Department", "Title": "Developer", "Base Yearly Salary": 85000.00, "Country": "India", "System Access Level": "User", "Workstation Name": "WS-1016"},
-            {"EmployeeID": 100017, "Full Name": "Liam Walker", "Department": "HR Department", "Title": "HR Specialist", "Base Yearly Salary": 72000.00, "Country": "Australia", "System Access Level": "User", "Workstation Name": "WS-1017"},
-            {"EmployeeID": 100018, "Full Name": "Chloe Hall", "Department": "Finance Department", "Title": "Payroll Specialist", "Base Yearly Salary": 66000.00, "Country": "Malaysia", "System Access Level": "User", "Workstation Name": "WS-1018"},
-            {"EmployeeID": 100019, "Full Name": "Benjamin Allen", "Department": "Logistics Solution", "Title": "Shipping Coordinator", "Base Yearly Salary": 80000.00, "Country": "Hong Kong", "System Access Level": "User", "Workstation Name": "WS-1019"},
-            {"EmployeeID": 100020, "Full Name": "Mia Young", "Department": "Sales Department", "Title": "Sales Executive", "Base Yearly Salary": 92000.00, "Country": "China", "System Access Level": "User", "Workstation Name": "WS-1020"}
+            {
+                "EmployeeID": 100000,
+                "Full Name": "Admin User",
+                "Department": "Administration",
+                "Title": "Administrator",
+                "Base Yearly Salary": 150000,
+                "Country": "Australia",
+                "System Access Level": "Admin",
+                "Workstation Name": "WS-Admin"
+            },
+            {
+                "EmployeeID": 100001,
+                "Full Name": "John Doe",
+                "Department": "IT Department",
+                "Title": "System Administrator",
+                "Base Yearly Salary": 80000.23,
+                "Country": "Australia",
+                "System Access Level": "Admin",
+                "Workstation Name": "WS-1001"
+            },
+            {
+                "EmployeeID": 100002,
+                "Full Name": "Jane Smith",
+                "Department": "HR Department",
+                "Title": "HR Specialist",
+                "Base Yearly Salary": 65000.75,
+                "Country": "India",
+                "System Access Level": "User",
+                "Workstation Name": "WS-1002"
+            },
+            {
+                "EmployeeID": 100003,
+                "Full Name": "Albert Johnson",
+                "Department": "Finance Department",
+                "Title": "Accountant",
+                "Base Yearly Salary": 90000.5,
+                "Country": "China",
+                "System Access Level": "User",
+                "Workstation Name": "WS-1003"
+            },
+            {
+                "EmployeeID": 100004,
+                "Full Name": "Emily Brown",
+                "Department": "Logistics Solution",
+                "Title": "Flight Coordinator",
+                "Base Yearly Salary": 78000,
+                "Country": "Hong Kong",
+                "System Access Level": "User",
+                "Workstation Name": "WS-1004"
+            },
+            {
+                "EmployeeID": 100005,
+                "Full Name": "Michael Davis",
+                "Department": "Sales Department",
+                "Title": "Sales Executive",
+                "Base Yearly Salary": 85000,
+                "Country": "Australia",
+                "System Access Level": "User",
+                "Workstation Name": "WS-1005"
+            },
+            {
+                "EmployeeID": 100006,
+                "Full Name": "Sarah Wilson",
+                "Department": "IT Department",
+                "Title": "Developer",
+                "Base Yearly Salary": 95000,
+                "Country": "Vietnam",
+                "System Access Level": "User",
+                "Workstation Name": "WS-1006"
+            },
+            {
+                "EmployeeID": 100007,
+                "Full Name": "Robert Lee",
+                "Department": "HR Department",
+                "Title": "HR Manager",
+                "Base Yearly Salary": 110000,
+                "Country": "Malaysia",
+                "System Access Level": "Admin",
+                "Workstation Name": "WS-1007"
+            },
+            {
+                "EmployeeID": 100008,
+                "Full Name": "Jessica White",
+                "Department": "Finance Department",
+                "Title": "Payroll Specialist",
+                "Base Yearly Salary": 67000,
+                "Country": "India",
+                "System Access Level": "User",
+                "Workstation Name": "WS-1008"
+            },
+            {
+                "EmployeeID": 100009,
+                "Full Name": "Daniel Taylor",
+                "Department": "Logistics Solution",
+                "Title": "Shipping Coordinator",
+                "Base Yearly Salary": 76000,
+                "Country": "China",
+                "System Access Level": "User",
+                "Workstation Name": "WS-1009"
+            },
+            {
+                "EmployeeID": 100010,
+                "Full Name": "Amanda Thomas",
+                "Department": "Sales Department",
+                "Title": "Sales Associate",
+                "Base Yearly Salary": 64000,
+                "Country": "Australia",
+                "System Access Level": "User",
+                "Workstation Name": "WS-1010"
+            },
+            {
+                "EmployeeID": 100011,
+                "Full Name": "Andrew Martin",
+                "Department": "IT Department",
+                "Title": "IT Manager",
+                "Base Yearly Salary": 120000,
+                "Country": "Hong Kong",
+                "System Access Level": "Admin",
+                "Workstation Name": "WS-1011"
+            },
+            {
+                "EmployeeID": 100012,
+                "Full Name": "Megan Jackson",
+                "Department": "HR Department",
+                "Title": "HR Specialist",
+                "Base Yearly Salary": 68000,
+                "Country": "Vietnam",
+                "System Access Level": "User",
+                "Workstation Name": "WS-1012"
+            },
+            {
+                "EmployeeID": 100013,
+                "Full Name": "William Harris",
+                "Department": "Finance Department",
+                "Title": "Finance Manager",
+                "Base Yearly Salary": 130000,
+                "Country": "Malaysia",
+                "System Access Level": "Admin",
+                "Workstation Name": "WS-1013"
+            },
+            {
+                "EmployeeID": 100014,
+                "Full Name": "Olivia Robinson",
+                "Department": "Logistics Solution",
+                "Title": "Logistics Manager",
+                "Base Yearly Salary": 115000,
+                "Country": "China",
+                "System Access Level": "Admin",
+                "Workstation Name": "WS-1014"
+            },
+            {
+                "EmployeeID": 100015,
+                "Full Name": "James Clark",
+                "Department": "Sales Department",
+                "Title": "Sales Manager",
+                "Base Yearly Salary": 125000,
+                "Country": "Vietnam",
+                "System Access Level": "Admin",
+                "Workstation Name": "WS-1015"
+            },
+            {
+                "EmployeeID": 100016,
+                "Full Name": "Sophia Lewis",
+                "Department": "IT Department",
+                "Title": "Developer",
+                "Base Yearly Salary": 85000,
+                "Country": "India",
+                "System Access Level": "User",
+                "Workstation Name": "WS-1016"
+            },
+            {
+                "EmployeeID": 100017,
+                "Full Name": "Liam Walker",
+                "Department": "HR Department",
+                "Title": "HR Specialist",
+                "Base Yearly Salary": 72000,
+                "Country": "Australia",
+                "System Access Level": "User",
+                "Workstation Name": "WS-1017"
+            },
+            {
+                "EmployeeID": 100018,
+                "Full Name": "Chloe Hall",
+                "Department": "Finance Department",
+                "Title": "Payroll Specialist",
+                "Base Yearly Salary": 66000,
+                "Country": "Malaysia",
+                "System Access Level": "User",
+                "Workstation Name": "WS-1018"
+            },
+            {
+                "EmployeeID": 100019,
+                "Full Name": "Benjamin Allen",
+                "Department": "Logistics Solution",
+                "Title": "Shipping Coordinator",
+                "Base Yearly Salary": 80000,
+                "Country": "Hong Kong",
+                "System Access Level": "User",
+                "Workstation Name": "WS-1019"
+            },
+            {
+                "EmployeeID": 100020,
+                "Full Name": "Mia Young",
+                "Department": "Sales Department",
+                "Title": "Sales Executive",
+                "Base Yearly Salary": 92000,
+                "Country": "China",
+                "System Access Level": "User",
+                "Workstation Name": "WS-1020"
+            }
         ]
 
-    def load_victoria_tax_table(self):
+    @staticmethod
+    def load_victoria_tax_table():
         """Load Victoria tax table data."""
         return {
             (0, 18200.0, 0.0),
@@ -1310,7 +1461,8 @@ class IPCMSData:
             (180001, None, 45.0)
         }
 
-    def load_payslip_table(self):
+    @staticmethod
+    def load_payslip_table():
         """Initialize payslip table."""
         return []
 

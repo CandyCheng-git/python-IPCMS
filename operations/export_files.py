@@ -26,7 +26,7 @@ class ExportOperations:
                     headers.insert(0, "No.")
                 customers = self.customer_manager.get_all_customers()
                 if not customers:
-                    print(f"No customers found to export to {assume_filename}")
+                    logging.error(f"No customers found to export to {assume_filename}")
                     return
                 csv_data = [
                     {
@@ -47,7 +47,7 @@ class ExportOperations:
             elif object_name == 'product':
                 products = self.product_manager.get_all_products()
                 if not products:
-                    print(f"No products found to export to {assume_filename}")
+                    logging.error(f"No products found to export to {assume_filename}")
                     return
                 csv_data = [
                     {
@@ -68,9 +68,9 @@ class ExportOperations:
                 csv_writer.writerows(csv_data)
                 csv_file_message = f'CSV file "{assume_filename}" has been created successfully.'
                 file_loca_message = f'Location: "{get_cur_location()}\\{assume_filename}"'
-                print("{} \n {}".format(csv_file_message, file_loca_message))
+                logging.info("{} \n {}".format(csv_file_message, file_loca_message))
         except Exception as er_msg:
-            print(f"Error: exporting {object_name} list - {str(er_msg)}")
+            logging.error(f"Error: exporting {object_name} list - {str(er_msg)}")
 
     # Export Function export_orders_json: Create a jason by Orders, then export
     def export_orders_json(self):
@@ -79,7 +79,7 @@ class ExportOperations:
             orders_data = []
             orders = self.order_manager.get_all_orders()
             if not orders:
-                print(f"No orders found to export to {set_filename}")
+                logging.error(f"No orders found to export to {set_filename}")
                 return
             for order in orders:
                 order_dict = vars(order)
@@ -89,7 +89,7 @@ class ExportOperations:
                 orders_data.append(order_dict)
             with open(set_filename, 'w') as json_file:
                 json.dump(orders_data, json_file, indent=4)
-            print(
+            logging.info(
                 f'JSON file "{set_filename}" created successfully. \nLocation: "{get_cur_location()}\\{set_filename}"')
         except Exception as er_msg:
-            print(f"Error: exporting orders: {er_msg}")
+            logging.error(f"Error: exporting orders: {er_msg}")

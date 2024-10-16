@@ -56,7 +56,7 @@ class OrderedProduct:
     """An ordered product object."""
 
     def __init__(
-            self, product_id, product_name, quantity, price_per_unit, total_price
+        self, product_id, product_name, quantity, price_per_unit, total_price
     ):
         self.product_id = str(product_id)
         self.product_name = product_name

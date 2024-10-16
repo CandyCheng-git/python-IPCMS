@@ -43,7 +43,7 @@ class ChartGenerator:
             elif usr_chs == 'b':
                 break
             else:
-                print("Invalid choice. Please try again.")
+                logging.error("Invalid choice. Please try again.")
 
     def gen_chart(self, data, labels, chart_title, xlabel, ylabel, export=False):
         """Generate a bar chart."""
@@ -146,10 +146,10 @@ class ChartGenerator:
 
     # Export Function export_all_charts: Call all the gen chart functions as export
     def export_all_charts(self):
-        print("\nExporting all charts as .png files...")
+        logging.info("\nExporting all charts as .png files...")
         self.gen_bar_chart_top_selling_products(export=True)
         self.gen_customer_location_distribution_chart(export=True)
         self.gen_customer_age_distribution_chart(export=True)
         file_loca_message = f'Location: "{get_cur_location()}\\"'
-        print("All charts have been exported successfully.")
-        print(file_loca_message)
+        logging.info("All charts have been exported successfully.")
+        logging.info(file_loca_message)

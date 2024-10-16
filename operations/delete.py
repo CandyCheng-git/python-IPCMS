@@ -1,8 +1,5 @@
 # delete.py
 
-import logging
-
-
 class DeleteOperations:
     def __init__(self, customer_manager, order_manager, erp_data):
         self.customer_manager = customer_manager

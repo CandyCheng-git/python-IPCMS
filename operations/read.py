@@ -1,4 +1,5 @@
 # read.py
+import logging
 
 from utils.transformers import DataTransformer
 from utils.validators import CheckValidator
@@ -116,7 +117,6 @@ class ReadOperations:
         # Display new table
         self.display_table(table_data, new_headers, col_widths_emp_data)
 
-
     # Function to view Tax Table Data in Victoria, Australia
     def view_victoria_tax_table(self):
         table_headers = ["Income Range Min", "Income Range Max", "Tax Rate (%)"]
@@ -173,10 +173,10 @@ class ReadOperations:
                     self.display_payslip_details(payslip)
                     return payslip  # Return the selected payslip
 
-            print("Payslip ID not found.")
+            logging.error("Payslip ID not found.")
             return None
         else:
-            print("Invalid input. Please enter a numeric ID.")
+            logging.error("Invalid input. Please enter a numeric ID.")
             return None
 
     """ CMS """
@@ -185,7 +185,7 @@ class ReadOperations:
     def display_product_table(self):
         products = self.product_manager.get_all_products()
         if not products:
-            print("No products available.")
+            logging.error("No products available.")
             return
 
         # Customize the Header
@@ -225,7 +225,7 @@ class ReadOperations:
             if self.validator.is_numeric(usr_chs) and 1 <= int(usr_chs) <= len(products):
                 self.display_product_details(products[int(usr_chs) - 1])
             else:
-                print("Invalid choice. Please try again.")
+                logging.error("Invalid choice. Please try again.")
 
     # Read Function display_product_details: View Product's details
     def display_product_details(self, product):
@@ -243,7 +243,7 @@ Updated Date: {self.transformer.to_std_datetimeformat(product.updated_at)}""")
     def display_customers(self):
         customers = self.customer_manager.get_all_customers()
         if not customers:
-            print("No customers available.")
+            logging.error("No customers available.")
             return None
 
         self.display_customer_table(customers)
@@ -258,9 +258,9 @@ Updated Date: {self.transformer.to_std_datetimeformat(product.updated_at)}""")
                     selected_customer = customers[idx]
                     return selected_customer
                 else:
-                    print("Invalid customer number. Please try again.")
+                    logging.error("Invalid customer number. Please try again.")
             else:
-                print("Invalid choice. Please try again.")
+                logging.error("Invalid choice. Please try again.")
         return None
 
     # Read Function display_customers: Display Customers for more details
@@ -320,7 +320,7 @@ Updated Date: {self.transformer.to_std_datetimeformat(customer.updated_at)}""")
             elif usr_chs == 'b':
                 return None, None  # Return when the user goes back
             else:
-                print("Invalid choice. Please try again.")
+                logging.error("Invalid choice. Please try again.")
 
 
     # Read Function display_charts: View a chart by selection
@@ -343,14 +343,14 @@ Updated Date: {self.transformer.to_std_datetimeformat(customer.updated_at)}""")
             elif usr_chs == 'b':
                 break
             else:
-                print("Invalid choice. Please try again.")
+                logging.error("Invalid choice. Please try again.")
         return None
 
     # Read Function display_orders: Display Orders for more details
     def display_orders(self):
         orders = self.order_manager.get_all_orders()
         if not orders:
-            print("No orders available.")
+            logging.error("No orders available.")
             return
         for indx, a_order in enumerate(orders, start=1):
             print(f"{indx}. Order ID: {a_order.order_id}, Customer Email: {a_order.customer_email}, Total Price: {a_order.total_price}")
@@ -362,7 +362,7 @@ Updated Date: {self.transformer.to_std_datetimeformat(customer.updated_at)}""")
             if self.validator.is_numeric(usr_chs) and 1 <= int(usr_chs) <= len(orders):
                 self.display_order_details(orders[int(usr_chs) - 1])
             else:
-                print("Invalid choice. Please try again.")
+                logging.error("Invalid choice. Please try again.")
 
     # Read Function display_order_details: View Order's details
     def display_order_details(self, order):
