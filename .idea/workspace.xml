@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4f4b9552-bf3f-4955-a81d-d94533734368" name="Changes" comment="Updated unitest - test_controllers.py">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/data.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/data.py" afterDir="false" />
+    <list default="true" id="4f4b9552-bf3f-4955-a81d-d94533734368" name="Changes" comment="Updated unitest - test_transformers.py">
+      <change beforePath="$PROJECT_DIR$/utils/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/utils.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +50,9 @@
     "Python tests.Python tests in test_authentication.py.executor": "Run",
     "Python tests.Python tests in test_charts.py.executor": "Run",
     "Python tests.Python tests in test_controllers.py.executor": "Run",
+    "Python tests.Python tests in test_data.py.executor": "Run",
+    "Python tests.Python tests in test_models.py.executor": "Run",
+    "Python tests.Python tests in test_transformers.py.executor": "Run",
     "Python.main.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
@@ -195,7 +196,31 @@
       <option name="project" value="LOCAL" />
       <updated>1729051411721</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Updated unitest - test_data.py">
+      <option name="closed" value="true" />
+      <created>1729053809929</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1729053809929</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Updated unitest - test_models.py">
+      <option name="closed" value="true" />
+      <created>1729053954878</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1729053954878</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Updated unitest - test_transformers.py">
+      <option name="closed" value="true" />
+      <created>1729054123513</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1729054123513</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -210,6 +235,9 @@
     <MESSAGE value="Updated ReadMe.md - Login as default admin How to Run the Project" />
     <MESSAGE value="Updated unitest - test_charts.py" />
     <MESSAGE value="Updated unitest - test_controllers.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated unitest - test_controllers.py" />
+    <MESSAGE value="Updated unitest - test_data.py" />
+    <MESSAGE value="Updated unitest - test_models.py" />
+    <MESSAGE value="Updated unitest - test_transformers.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated unitest - test_transformers.py" />
   </component>
 </project>
