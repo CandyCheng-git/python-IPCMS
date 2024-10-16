@@ -164,4 +164,5 @@ class ReportGenerator:
         ms_word_doc = Document()
         self.create_report_document(ms_word_doc, report_contents)
         ms_word_doc.save(set_filename)
-        logging.info(f'Report "{set_filename}" created successfully. \nLocation: "{get_cur_location()}\\{set_filename}"')
+        logging.info(f'Report "{set_filename}" created successfully. '
+                     f'\nLocation: "{get_cur_location()}\\{set_filename}"')
