@@ -4,8 +4,9 @@ from models.models import Customer, Product, Order
 class EnterpriseData:
     """Load and store initial data from the shop."""
 
-    def __init__(self):
-        self.col_widths = IPCMSData().init_col_widths()
+    def __init__(self, ipcms_data):
+        # Now EnterpriseData uses an existing IPCMSData instance
+        self.col_widths = ipcms_data.init_col_widths()
         self.customers = self.load_customers()
         self.products = self.load_products()
         self.orders = self.load_orders()
@@ -1106,7 +1107,8 @@ class IPCMSData:
     def __init__(self):
         self.welcome_message = "Welcome to the ERP System!"
         self.full_served_countries = self.load_full_served_countries()
-        self.enterprise_data = EnterpriseData()
+        # Initialize EnterpriseData after IPCMSData is fully set up
+        self.enterprise_data = EnterpriseData(self)
         self.custom_headers = {
             'customers': self.gen_customer_headers(),
             'products': self.gen_product_headers(),

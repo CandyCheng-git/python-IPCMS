@@ -31,8 +31,8 @@ class IPCMSApp:
         self.customer_manager = CustomerController(self.order_manager)
 
         # Load the datasets into the controllers/managers
-        self.enterprise_data = EnterpriseData()
         self.IPCMS_data = IPCMSData()
+        self.enterprise_data = EnterpriseData(self.IPCMS_data)
 
         # Adjust logging level to suppress messages during data loading
         logging.getLogger().setLevel(logging.CRITICAL)
