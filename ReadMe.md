@@ -16,15 +16,8 @@
 
 ```bash
 IPCMS
-│  customers.csv               # Customer data (CSV)
-│  customer_age_distribution.png # Customer age distribution chart
-│  customer_location_distribution.png # Customer location distribution chart
-│  ipcms_main.py               # Main application script
 │  main.py                     # Core application logic
-│  marketing_report_20241015141837.docx # Sample marketing report
-│  orders.json                 # Order data (JSON)
-│  products.csv                # Product data (CSV)
-│  top-selling_products.png    # Top-selling products chart
+│  marketing_report_2024XXXXXXXXXX.docx # Sample marketing report
 ├─authentication               # Handles user authentication
 ├─charts                       # Chart generation logic
 ├─controllers                  # Controllers for managing main operations
@@ -83,4 +76,4 @@ Upon running the application, you can perform the following operations:
 - Export reports in Word format and visualize data in charts.
 
 ## Sample Report
-A sample marketing report (`marketing_report_20241015141837.docx`) is included in the root directory of the project. It contains KPIs, product performance, order insights, and charts illustrating sales data.
+A sample marketing report (`marketing_report_2024XXXXXXXXXX.docx`) is included in the root directory of the project. It contains KPIs, product performance, order insights, and charts illustrating sales data.
