@@ -1,8 +1,6 @@
-# charts.py
+# charts/charts.py
 
-import matplotlib.pyplot as plt
 import numpy as np
-import os
 import logging
 from utils.utils import get_cur_location
 from datetime import datetime

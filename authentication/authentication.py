@@ -1,4 +1,4 @@
-# authentication.py
+# authentication/authentication.py
 
 import logging
 from utils.transformers import DataTransformer

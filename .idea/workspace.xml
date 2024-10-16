@@ -4,20 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4f4b9552-bf3f-4955-a81d-d94533734368" name="Changes" comment="Deleted utility_operations.py">
-      <change afterPath="$PROJECT_DIR$/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/charts/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controllers/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/operations/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/reports/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/__init__.py" afterDir="false" />
+    <list default="true" id="4f4b9552-bf3f-4955-a81d-d94533734368" name="Changes" comment="Updated ReadMe.md - Login as default admin How to Run the Project">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/data.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/data.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_authentication.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_authentication.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/charts/charts.py" beforeDir="false" afterPath="$PROJECT_DIR$/charts/charts.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -169,7 +158,23 @@
       <option name="project" value="LOCAL" />
       <updated>1729047077678</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Updated test_authentication.py">
+      <option name="closed" value="true" />
+      <created>1729048246955</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1729048246955</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Updated ReadMe.md - Login as default admin How to Run the Project">
+      <option name="closed" value="true" />
+      <created>1729048380468</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1729048380468</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -177,6 +182,8 @@
     <MESSAGE value="Updated" />
     <MESSAGE value="Updated logging" />
     <MESSAGE value="Deleted utility_operations.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="Deleted utility_operations.py" />
+    <MESSAGE value="Updated test_authentication.py" />
+    <MESSAGE value="Updated ReadMe.md - Login as default admin How to Run the Project" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated ReadMe.md - Login as default admin How to Run the Project" />
   </component>
 </project>
