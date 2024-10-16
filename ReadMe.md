@@ -50,6 +50,12 @@ IPCMS
    python main.py
    ```
 
+4. **Login as default admin**:
+   ```bash
+   Enter your Username: admin
+   Enter your Password: admin123
+   ```
+
 ## Modules
 
 - **Authentication** (`authentication/authentication.py`): Handles user login and session management.
