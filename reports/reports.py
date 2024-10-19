@@ -1,7 +1,6 @@
 # reports/reports.py
 
 import logging
-
 from docx import Document
 from docx.shared import Inches
 from datetime import datetime
@@ -10,9 +9,8 @@ from utils.utils import get_cur_location, get_sales_quantity
 from utils.transformers import DataTransformer
 
 
+# Class: Generate and manage reports
 class ReportGenerator:
-    """Class to generate and manage reports."""
-
     def __init__(self, customer_manager, product_manager, order_manager, chart_generator):
         self.transform_data_method = DataTransformer()
         self.customer_manager = customer_manager
@@ -20,8 +18,8 @@ class ReportGenerator:
         self.order_manager = order_manager
         self.chart_generator = chart_generator
 
+    # Create: content of the report
     def create_report_content(self):
-        """Generate the content of the report."""
         return {
             'kpis': self.gen_kpis_section(),
             'product_performance': self.gen_product_performance_section(),
@@ -29,7 +27,7 @@ class ReportGenerator:
             'charts': self.get_chart_filenames(),
         }
 
-    # Report Function gen_kpis_section: gen KPI's section
+    # Generate: KPI's section
     def gen_kpis_section(self):
         tt_sales = sum(float(order.total_price) for order in self.order_manager.get_all_orders())
         tt_customers = len(self.customer_manager.get_all_customers())
@@ -44,7 +42,7 @@ class ReportGenerator:
             'Customer Retention Rate': f"{customer_retention_rate:.2f}%"  # Simplified
         }
 
-    # Report Function gen_product_performance_section: gen product's performance section
+    # Generate:  product's performance section
     def gen_product_performance_section(self):
         pd_sales = {}
         for a_order in self.order_manager.get_all_orders():
@@ -54,8 +52,10 @@ class ReportGenerator:
                 elif hasattr(op, 'product_name') and hasattr(op, 'quantity'):
                     pd_sales[op.product_name] = pd_sales.get(op.product_name, 0) + int(op.quantity)
         best_sale = max(pd_sales.items(), key=get_sales_quantity, default=("N/A",))[0]
-        the_low_stock = [f"{p.product_name} – {p.stock_quantity} units" for p in self.product_manager.get_all_products()
-                         if p.stock_quantity < 10]
+        the_low_stock = [
+            f"{p.product_name} – {p.stock_quantity} units"
+            for p in self.product_manager.get_all_products()
+            if p.stock_quantity < 10]
 
         return {
             'Best-Selling Product': best_sale,
@@ -67,7 +67,7 @@ class ReportGenerator:
             ]
         }
 
-    # Report Function gen_order_customer_insights_section: gen customer's insights section
+    # Generate:  customer's insights section
     def gen_order_customer_insights_section(self):
         rc_orders = sorted(
             self.order_manager.get_all_orders(),
@@ -79,22 +79,61 @@ class ReportGenerator:
             cities_of_customer[a_customer.city] = cities_of_customer.get(a_customer.city, 0) + 1
 
         return {
-            'Recent Orders': [{'Order ID': o.order_id, 'Date': o.order_date, 'Total': f"${float(o.total_price):,.2f}"}
-                              for o in rc_orders],
-            'Customer Demographics': [{'City': city, 'Number of Customers': count} for city, count in
-                                      cities_of_customer.items()]
+            'Recent Orders': [{
+                'Order ID': o.order_id,
+                'Date': o.order_date,
+                'Total': f"${float(o.total_price):,.2f}"
+            } for o in rc_orders],
+            'Customer Demographics': [{
+                'City': city, 'Number of Customers': count
+            } for city, count in cities_of_customer.items()]
         }
 
+    # Generate: employee's information section
+    def gen_employee_info_section(self):
+        """ TBC """
+        """ Need to init the ReadOperations """
+        # Display the employees who have highest and lowest salary
+        #self.get_highest_salary_employee()
+        #self.get_lowest_salary_employee()
+
+        # Calculate and prompt total salary of all employees
+        #employee_total_salary = sum(
+        # emp["Base Yearly Salary"] for emp in self.employee_data_with_constraints)
+        #print(f"Total salary of all employees: ${employee_total_salary}")
+
+        # Use filter to get and prompt the employees only in the HR department
+        #employees_hr = list(
+        # filter(self.validator.is_hr_department, self.employee_data_with_constraints))
+        #print(f"HR Employees: {[emp['Full Name'] for emp in employees_hr]}")
+
+        # Check if all employees are from Australia
+        #all_aus_employees = all(
+        # each_employee["Country"] == "Australia" for each_employee in self.employee_data_with_constraints)
+        #print(f"All employees are from Australia: {all_aus_employees}")
+
+        # Check if any employee is from Hong Kong
+        #any_hongkong_employee = any(
+        # each_employee["Country"] == "Hong Kong" for each_employee in self.employee_data_with_constraints)
+        #print(f"There is at least one employee from Hong Kong: {any_hongkong_employee}")
+
+        # Get unique departments by set()
+        #unique_departments = set(
+        # each_employee["Department"] for each_employee in self.employee_data_with_constraints)
+        #print(f"Unique Departments: {unique_departments}")
+
+        return {}
+
+    # Generate: filenames of the charts
     @staticmethod
     def get_chart_filenames():
-        """Get the filenames of the charts."""
         return [
             'top-selling_products.png',
             'customer_location_distribution.png',
             'customer_age_distribution.png'
         ]
 
-    # Report Function create_report_document: gen report's Microsoft doc
+    # Generate: report's Microsoft doc
     def create_report_document(self, ms_wd_doc, contents):
         # Add Title
         ms_wd_doc.add_heading('Marketing Report', 0)
@@ -106,7 +145,8 @@ class ReportGenerator:
 
         # 2nd Section – Product Performance
         ms_wd_doc.add_heading('2. Product Performance', level=1)
-        ms_wd_doc.add_paragraph(f"• Best-Selling Product: {contents['product_performance']['Best-Selling Product']}")
+        ms_wd_doc.add_paragraph(f"• Best-Selling Product: "
+                                f"{contents['product_performance']['Best-Selling Product']}")
         ms_wd_doc.add_paragraph(f"• Low Stock Alert:")
         for alert in contents['product_performance']['Low Stock Alert']:
             ms_wd_doc.add_paragraph(f"  - {alert}", style='List Bullet')
@@ -158,7 +198,7 @@ class ReportGenerator:
             else:
                 ms_wd_doc.add_paragraph(f"Chart '{a_chart_filename}' not found.")
 
-    # Export Function export_report: Create a Report, then export
+    # Export: Microsoft Word Report
     def export_report(self):
         report_contents = self.create_report_content()
         set_filename = f"marketing_report_{datetime.now().strftime('%Y%m%d%H%M%S')}.docx"

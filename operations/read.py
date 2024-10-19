@@ -1,10 +1,11 @@
-# read.py
+# operations/read.py
 import logging
 
 from utils.transformers import DataTransformer
 from utils.validators import CheckValidator
 
 
+# Class: All operations of read
 class ReadOperations:
     def __init__(self, 
                  customer_manager, 
@@ -25,26 +26,30 @@ class ReadOperations:
         self.victoria_tax_table = erp_data.victoria_tax_table
         self.payslip_table = erp_data.payslip_table
 
-    # Function to view employee information with some findings
-    def is_hr_department(self, employee):
-        return employee["Department"] == "HR"
-
-    # General function to view aligned tables
+    # Display:: data in an aligned table format
     def display_table(self, data, headers, col_widths):
-        """Display data in an aligned table format."""
-        header_line = "|".join([self.transformer.pad_string(header, col_widths.get(header, 10)) for header in headers])
+        header_line = "|".join([
+            self.transformer.pad_string(
+                header, col_widths.get(header, 10)
+            ) for header in headers
+        ])
         print(header_line)
         print('-' * len(header_line))
         for row in data:
-            row_line = "|".join([self.transformer.pad_string(str(row.get(header, '')), col_widths.get(header, 10)) for header in headers])
+            row_line = "|".join([
+                self.transformer.pad_string(
+                    str(row.get(header, '')), col_widths.get(header, 10)
+                ) for header in headers
+            ])
             print(row_line)
 
-    """ IP """
+    """ For the IP System """
 
-    # Helper function to display detailed payroll information by employee payroll mapping
+    # Display: Helper function to display detailed payroll information by employee payroll mapping
     def display_payslip_details(self, payslip):
-        """Display detailed payroll information."""
-        formatted_info = f"EmployeeID: {payslip['EmployeeID']} Department: {payslip['Department']} Title: {payslip['Title']}"
+        formatted_info = (f"EmployeeID: {payslip['EmployeeID']} "
+                          f"Department: {payslip['Department']} "
+                          f"Title: {payslip['Title']}")
         print(f"\nPayslip Details:")
         print(formatted_info)
         print(f"Tax: {payslip['Tax (AUD)']}")
@@ -52,48 +57,28 @@ class ReadOperations:
         print(f"Net Yearly Salary (AUD): {payslip['Net Salary (AUD)']}")
         print(f"Converted Net Yearly Salary: {payslip['Converted Net Yearly Salary']}")
 
-    # Function to get employee who has the highest salary
+    # Read: employee who has the highest salary
     def get_highest_salary_employee(self):
-        """Get the employee with the highest salary."""
-        highest_salary_employee = max(self.employee_data_with_constraints, key=lambda emp: emp["Base Yearly Salary"])
-        print(f"Employee with the highest salary: {highest_salary_employee['Full Name']} - ${highest_salary_employee['Base Yearly Salary']}")
+        highest_salary_employee = max(
+            self.employee_data_with_constraints, key=lambda emp: emp["Base Yearly Salary"]
+        )
+        print(f"Employee with the highest salary: {highest_salary_employee['Full Name']}"
+              f"- ${highest_salary_employee['Base Yearly Salary']}")
 
-    # Function to get employee who has the lowest salary
+    # Read: employee who has the lowest salary
     def get_lowest_salary_employee(self):
-        """Get the employee with the lowest salary."""
-        lowest_salary_employee = min(self.employee_data_with_constraints, key=lambda emp: emp["Base Yearly Salary"])
-        print(f"Employee with the lowest salary: {lowest_salary_employee['Full Name']} - ${lowest_salary_employee['Base Yearly Salary']}")
+        lowest_salary_employee = min(
+            self.employee_data_with_constraints, key=lambda emp: emp["Base Yearly Salary"]
+        )
+        print(f"Employee with the lowest salary: {lowest_salary_employee['Full Name']}"
+              f" - ${lowest_salary_employee['Base Yearly Salary']}")
 
-    # Function to get employee's salary
+    # Read: employee's salary
     def get_employee_salary(self, employee):
         return employee["Base Yearly Salary"]
 
-    # Function to view employee information with some findings
+    # Read: employee information with some findings
     def view_employee_info(self):
-        # Display the employees who have highest and lowest salary
-        #self.get_highest_salary_employee()
-        #self.get_lowest_salary_employee()
-
-        # Calculate and prompt total salary of all employees
-        #employee_total_salary = sum(emp["Base Yearly Salary"] for emp in self.employee_data_with_constraints)
-        #print(f"Total salary of all employees: ${employee_total_salary}")
-
-        # Use filter to get and prompt the employees only in the HR department
-        #employees_hr = list(filter(self.is_hr_department, self.employee_data_with_constraints))
-        #print(f"HR Employees: {[emp['Full Name'] for emp in employees_hr]}")
-
-        # Check if all employees are from Australia
-        #all_aus_employees = all(each_employee["Country"] == "Australia" for each_employee in self.employee_data_with_constraints)
-        #print(f"All employees are from Australia: {all_aus_employees}")
-
-        # Check if any employee is from Hong Kong
-        #any_hongkong_employee = any(each_employee["Country"] == "Hong Kong" for each_employee in self.employee_data_with_constraints)
-        #print(f"There is at least one employee from Hong Kong: {any_hongkong_employee}")
-
-        # Get unique departments by set()
-        #unique_departments = set(each_employee["Department"] for each_employee in self.employee_data_with_constraints)
-        #print(f"Unique Departments: {unique_departments}")
-
         # Update headers to add "No."
         new_headers = ["No.", "EmployeeID", "Full Name", "Department", "Title", "Country"]
 
@@ -117,7 +102,7 @@ class ReadOperations:
         # Display new table
         self.display_table(table_data, new_headers, col_widths_emp_data)
 
-    # Function to view Tax Table Data in Victoria, Australia
+    # Read: Tax Table Data in Victoria, Australia
     def view_victoria_tax_table(self):
         table_headers = ["Income Range Min", "Income Range Max", "Tax Rate (%)"]
         table_data = [
@@ -131,7 +116,7 @@ class ReadOperations:
         col_widths_tax = self.col_widths['victoria_tax_table']
         self.display_table(table_data, table_headers, col_widths_tax)
 
-    # Function to view AUD currency conversion table data
+    # Read: AUD currency conversion table data
     def view_currency_conversion_table(self):
         table_headers = ["Country", "Curr Code", "Rate to AUD"]
         table_data = [
@@ -145,7 +130,7 @@ class ReadOperations:
         col_widths_currency = self.col_widths['currency_conversion_table']
         self.display_table(table_data, table_headers, col_widths_currency)
 
-    # Function to view all payslips and ask the id for details
+    # Read: all payslips and ask the id for details
     def view_all_payslips(self):
         table_headers = ["ID", "EmployeeID", "Full Name", "Department", "Title"]
         table_data = [
@@ -179,9 +164,9 @@ class ReadOperations:
             logging.error("Invalid input. Please enter a numeric ID.")
             return None
 
-    """ CMS """
+    """ For the CMSystem """
 
-    # Read Function display_product_table: Display Products table for more details
+    # Read: Products table for more details
     def display_product_table(self):
         products = self.product_manager.get_all_products()
         if not products:
@@ -204,7 +189,7 @@ class ReadOperations:
 
         data = [
             {
-                'No.': str(indx),
+                'No.': str(i),
                 'pid': p.product_id,
                 'product_name': p.product_name,
                 'price': str(p.price),
@@ -213,7 +198,7 @@ class ReadOperations:
                 'created_at': self.transformer.to_std_datetimeformat(p.created_at),
                 'updated_at': self.transformer.to_std_datetimeformat(p.updated_at)
             }
-            for indx, p in enumerate(products, start=1)
+            for i, p in enumerate(products, start=1)
         ]
 
         self.display_table(data, headers, col_widths_with_no)
@@ -227,7 +212,7 @@ class ReadOperations:
             else:
                 logging.error("Invalid choice. Please try again.")
 
-    # Read Function display_product_details: View Product's details
+    # Read: Product's details
     def display_product_details(self, product):
         print(f"""
 Product Details for {product.product_name}:
@@ -239,7 +224,7 @@ Quantity (qty): {product.stock_quantity}
 Created Date: {self.transformer.to_std_datetimeformat(product.created_at)}
 Updated Date: {self.transformer.to_std_datetimeformat(product.updated_at)}""")
 
-    # Read Function display_customers: Display Customers for more details
+    # Read: Customers for more details
     def display_customers(self):
         customers = self.customer_manager.get_all_customers()
         if not customers:
@@ -263,7 +248,7 @@ Updated Date: {self.transformer.to_std_datetimeformat(product.updated_at)}""")
                 logging.error("Invalid choice. Please try again.")
         return None
 
-    # Read Function display_customers: Display Customers for more details
+    # Read: Customers table by custom
     def display_customer_table(self, customers):
         col_widths = self.erp_data.col_widths['customers'].copy()
         if 'postcode' in col_widths:
@@ -276,7 +261,7 @@ Updated Date: {self.transformer.to_std_datetimeformat(product.updated_at)}""")
 
         data = [
             {
-                'No.': str(indx),
+                'No.': str(i),
                 'first_name': a_cus.first_name,
                 'last_name': a_cus.last_name,
                 'dob': a_cus.dob,
@@ -288,12 +273,12 @@ Updated Date: {self.transformer.to_std_datetimeformat(product.updated_at)}""")
                 'created_at': self.transformer.to_std_datetimeformat(a_cus.created_at),
                 'updated_at': self.transformer.to_std_datetimeformat(a_cus.updated_at)
             }
-            for indx, a_cus in enumerate(customers, start=1)
+            for i, a_cus in enumerate(customers, start=1)
         ]
 
         self.display_table(data, headers, col_widths_with_no)
 
-    # Read Function display_customer_table: Display Customers table by custom
+    # Read: Customers by more details
     def display_customer_details(self, customer):
         while True:
             print(f"""
@@ -322,8 +307,7 @@ Updated Date: {self.transformer.to_std_datetimeformat(customer.updated_at)}""")
             else:
                 logging.error("Invalid choice. Please try again.")
 
-
-    # Read Function display_charts: View a chart by selection
+    # Read: chart by selection
     def display_charts(self):
         while True:
             print(f"""
@@ -346,14 +330,15 @@ Updated Date: {self.transformer.to_std_datetimeformat(customer.updated_at)}""")
                 logging.error("Invalid choice. Please try again.")
         return None
 
-    # Read Function display_orders: Display Orders for more details
+    # Read: Orders for more details
     def display_orders(self):
         orders = self.order_manager.get_all_orders()
         if not orders:
             logging.error("No orders available.")
             return
-        for indx, a_order in enumerate(orders, start=1):
-            print(f"{indx}. Order ID: {a_order.order_id}, Customer Email: {a_order.customer_email}, Total Price: {a_order.total_price}")
+        for i, a_order in enumerate(orders, start=1):
+            print(f"{i}. Order ID: {a_order.order_id}, "
+                  f"Customer Email: {a_order.customer_email}, Total Price: {a_order.total_price}")
 
         while True:
             usr_chs = input("\nEnter order number to view details, or 'b' to go back: ").strip().lower()
@@ -364,7 +349,7 @@ Updated Date: {self.transformer.to_std_datetimeformat(customer.updated_at)}""")
             else:
                 logging.error("Invalid choice. Please try again.")
 
-    # Read Function display_order_details: View Order's details
+    # Read : Order's details
     def display_order_details(self, order):
         print(f"""
 Order Details for Order ID: {order.order_id}
@@ -377,4 +362,6 @@ Created Date: {self.transformer.to_std_datetimeformat(order.created_at)}
 Updated Date: {self.transformer.to_std_datetimeformat(order.updated_at)}""")
         print("\nOrdered Products:")
         for op in order.order_products:
-            print(f"- Product ID: {op.product_id}, Name: {op.product_name}, Quantity: {op.quantity}, Price per Unit: {op.price_per_unit}, Total Price: {op.total_price}")
+            print(f"- Product ID: {op.product_id}, "
+                  f"Name: {op.product_name}, Quantity: {op.quantity}, "
+                  f"Price per Unit: {op.price_per_unit}, Total Price: {op.total_price}")

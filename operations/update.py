@@ -1,10 +1,11 @@
-# update.py
+# operations/update.py
 import logging
 
 from utils.validators import CheckValidator
 from datetime import datetime
 
 
+# Class: All operations of update
 class UpdateOperations:
     def __init__(self, customer_manager, erp_data):
         self.customer_manager = customer_manager
@@ -12,11 +13,9 @@ class UpdateOperations:
         self.validator = CheckValidator()
         self.currency_conversion_table = erp_data.currency_conversion_table
 
-    """ IP """
-    # Function to update the currency conversion table
+    """ For the IP System """
+    # Update: currency conversion table
     def update_currency_conversion_table(self):
-        #self.read_ops.view_currency_conversion_table()
-
         curr_code = input("Enter Currency Code to update (or press Enter to skip): ").upper()
         if curr_code == "":  # Allow the user to skip then return
             return
@@ -55,7 +54,7 @@ class UpdateOperations:
 
     """ CMS """
 
-    # Update Function update_customer: Update a Customer details
+    # Update: Customer details
     def update_customer(self, customer):
         print("\nUpdate Customer")
         # Check Input one by one
@@ -122,7 +121,7 @@ class UpdateOperations:
         customer.updated_at = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         logging.info("Customer updated successfully.")
 
-    # Update Function update_customer_by_email: Run update_customer b4 checking by Email
+    # Update: Run update_customer b4 checking by Email
     def update_customer_by_email(self):
         input_email = input("Enter the email of the customer to update: ").strip()
         the_customer = self.customer_manager.get_customer_by_email(input_email)

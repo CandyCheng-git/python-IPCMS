@@ -1,4 +1,4 @@
-# create.py
+# operations/create.py
 import logging
 
 from utils.validators import CheckValidator
@@ -7,6 +7,7 @@ from operations.read import ReadOperations
 from datetime import datetime
 
 
+# Class:: All operations of create
 class CreateOperations:
     def __init__(self,
                  customer_manager,
@@ -32,10 +33,9 @@ class CreateOperations:
         self.victoria_tax_table = erp_data.victoria_tax_table
         self.currency_conversion_table = erp_data.currency_conversion_table
 
+    """ For the CMSystem """
 
-    """ CMS """
-
-    # Create Function create_new_customer: New Customer
+    # Create: Customer
     def create_new_customer(self):
         print("\nCreate a New Customer")
         email = input("Enter email: ").strip()
@@ -61,8 +61,8 @@ class CreateOperations:
 
         # Confirm
         logging.info(
-            f"\nConfirm customer info:\nEmail: {email}\nFirst Name: {first_name}\nLast Name: {last_name}\nDOB: {dob}"
-            f"\nPhone: {phone}\nCountry: {country}\nCity: {city}\nPostcode: {postcode}")
+            f"\nConfirm customer info:\nEmail: {email}\nFirst Name: {first_name}\nLast Name: {last_name}"
+            f"\nDOB: {dob}\nPhone: {phone}\nCountry: {country}\nCity: {city}\nPostcode: {postcode}")
         if input("Is this information correct? (y/n): ").strip().lower() != 'y':
             logging.warning("Customer creation cancelled.")
             return
@@ -73,15 +73,16 @@ class CreateOperations:
 
         # Try Create
         try:
-            self.customer_manager.create_customer(first_name, last_name, dob, email, phone, country, city, postcode,
-                                                  created_at, updated_at)
+            self.customer_manager.create_customer(
+                first_name, last_name, dob, email, phone, country, city, postcode,
+                created_at, updated_at)
             logging.info("Customer created successfully.")
         except Exception as er_msg:
             logging.error("Error: creating customer:", str(er_msg))
 
+    """  For the IP System"""
 
-    """ IP """
-    # Function to create a payslip by employee id
+    # Create: payslip by employee id
     def create_payslip(self):
         input_employee_id = input("Enter Employee ID to create payslip (or press Enter to skip): ")
         if input_employee_id == "":  # Allow the user to skip then return
@@ -116,7 +117,7 @@ class CreateOperations:
             new_payslip = {
                 "ID": payslip_id,
                 "EmployeeID": input_employee_id,
-                "Full Name": self.transformer.format_name(employee["Full Name"]),  # Title case the name
+                "Full Name": self.transformer.format_name(employee["Full Name"]),
                 "Department": employee["Department"],
                 "Title": employee["Title"],
                 "Gross Salary (AUD)": base_yearly_salary,
@@ -132,4 +133,3 @@ class CreateOperations:
         else:
             logging.error("Employee not found.")
             return
-

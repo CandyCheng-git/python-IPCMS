@@ -5,15 +5,17 @@ from utils.transformers import DataTransformer
 from utils.validators import CheckValidator
 
 
+# Class:: Generate and manage login authentication.
 class AuthenticationService:
+
     def __init__(self, employee_login_dict, employee_data_with_constraints):
         self.employee_login_dict = employee_login_dict
         self.employee_data_with_constraints = employee_data_with_constraints
         self.transformer = DataTransformer()
         self.validator = CheckValidator()
 
+    # Function to handle the login process
     def login_system(self):
-        """Handle the login process."""
         max_attempts = 3
         attempts_left = max_attempts
 
@@ -43,9 +45,8 @@ class AuthenticationService:
             if each_employee["EmployeeID"] == employee_id:
                 return each_employee["System Access Level"]
 
-
+    # Function to find the Employee ID by username - .items()
     def find_employee_id(self, username):
-        """Find the employee ID based on username."""
         for emp_id, emp_data in self.employee_login_dict.items():
             if emp_data["Login Name"] == username:
                 return emp_id

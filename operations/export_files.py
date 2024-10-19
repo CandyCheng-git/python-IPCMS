@@ -1,4 +1,4 @@
-# export.py
+# operations/export_files.py
 
 import csv
 import json
@@ -6,7 +6,7 @@ import logging
 from utils.utils import get_cur_location
 
 
-
+# Class::  All operations of export
 class ExportOperations:
     def __init__(self, customer_manager, product_manager, order_manager, erp_data):
         self.customer_manager = customer_manager
@@ -14,7 +14,7 @@ class ExportOperations:
         self.order_manager = order_manager
         self.erp_data = erp_data
 
-    # Export Function export_csv: Create a csv by data list, then export
+    # Export: Create a csv by data list, then export
     def export_csv(self, object_name):
         name_in_col_widths = object_name + 's'
         assume_filename = "".join([name_in_col_widths, '.csv'])
@@ -72,7 +72,7 @@ class ExportOperations:
         except Exception as er_msg:
             logging.error(f"Error: exporting {object_name} list - {str(er_msg)}")
 
-    # Export Function export_orders_json: Create a jason by Orders, then export
+    # Export: Create a jason by Orders, then export
     def export_orders_json(self):
         set_filename = 'orders.json'
         try:
@@ -90,6 +90,7 @@ class ExportOperations:
             with open(set_filename, 'w') as json_file:
                 json.dump(orders_data, json_file, indent=4)
             logging.info(
-                f'JSON file "{set_filename}" created successfully. \nLocation: "{get_cur_location()}\\{set_filename}"')
+                f'JSON file "{set_filename}" created successfully. '
+                f'\nLocation: "{get_cur_location()}\\{set_filename}"')
         except Exception as er_msg:
             logging.error(f"Error: exporting orders: {er_msg}")

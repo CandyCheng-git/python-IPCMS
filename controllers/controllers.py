@@ -5,13 +5,13 @@ import logging
 from models.models import Customer, Product, Order
 
 
+# Class:: Manage all operations which is related to a Customer
 class CustomerController:
-    """Manage all operations related to a Customer."""
-
     def __init__(self, order_manager):
         self.customers = []
         self.order_manager = order_manager
 
+    # Create: customer
     def create_customer(
             self,
             first_name,
@@ -43,12 +43,16 @@ class CustomerController:
         else:
             self.customers.append(new_customer)
 
+    # Read: get a customer by email
     def get_customer_by_email(self, email):
-        """Retrieve a customer by email."""
         return next((c for c in self.customers if c.email == email), None)
 
+    # Read: Get a list of all customers.
+    def get_all_customers(self):
+        return self.customers
+
+    # Update: Update a customer's information by email.
     def update_customer_by_email(self, new_customer):
-        """Update a customer's information by email."""
         for idx, existing_customer in enumerate(self.customers):
             if existing_customer.email == new_customer.email:
                 new_customer.updated_at = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -57,8 +61,8 @@ class CustomerController:
                 return
         logging.error(f"Customer '{new_customer.email}' not found.")
 
+    # Delete: Delete a customer by email.
     def delete_customer(self, email):
-        """Delete a customer by email."""
         existing_customer = self.get_customer_by_email(email)
         if existing_customer:
             confirmation = input(f"Are you sure you want to delete {email}? (y/n): ")
@@ -71,17 +75,13 @@ class CustomerController:
         else:
             logging.error(f"Customer with email '{email}' does not exist.")
 
-    def get_all_customers(self):
-        """Get a list of all customers."""
-        return self.customers
 
-
+# Class:: Manage all operations related to a Product.
 class ProductController:
-    """Manage all operations related to a Product."""
-
     def __init__(self):
         self.products = []
 
+    # Create: product
     def create_product(
             self,
             product_id,
@@ -110,8 +110,16 @@ class ProductController:
         else:
             self.products.append(product)
 
+    # Read: Get a product by product ID.
+    def get_product_by_id(self, product_id):
+        return next((p for p in self.products if p.product_id == str(product_id).strip()), None)
+
+    # Read: Get a list of all products.
+    def get_all_products(self):
+        return self.products
+
+    # Update: Update a product's information by product ID.
     def update_product_by_id(self, new_product):
-        """Update a product's information by product ID."""
         if new_product is None:
             logging.error("Cannot update a None product.")
             return False
@@ -127,22 +135,14 @@ class ProductController:
         logging.error(f"Product '{new_product.product_id}' not found.")
         return False
 
-    def get_product_by_id(self, product_id):
-        """Retrieve a product by product ID."""
-        return next((p for p in self.products if p.product_id == str(product_id).strip()), None)
 
-    def get_all_products(self):
-        """Get a list of all products."""
-        return self.products
-
-
+# Class:: Manage all operations related to an Order.
 class OrderController:
-    """Manage all operations related to an Order."""
-
     def __init__(self, product_manager):
         self.orders = []
         self.product_manager = product_manager
 
+    # Create: order
     def create_order(
             self,
             order_id,
@@ -176,8 +176,16 @@ class OrderController:
         else:
             self.orders.append(order)
 
+    # Read: Get an order by order ID.
+    def get_order_by_id(self, order_id):
+        return next((order for order in self.orders if order.order_id == order_id), None)
+
+    # Read: Get a list of all orders.
+    def get_all_orders(self):
+        return self.orders
+
+    # Update: Update an order's information by order ID.
     def update_order_by_id(self, new_order):
-        """Update an order's information by order ID."""
         for idx, existing_order in enumerate(self.orders):
             if existing_order.order_id == new_order.order_id:
                 for key, value in vars(new_order).items():
@@ -188,17 +196,9 @@ class OrderController:
         logging.error(f"Order '{new_order.order_id}' not found.")
         return False
 
+    # Delete: Delete all orders associated with a customer's email.
     def delete_orders_by_customer_email(self, customer_email):
-        """Delete all orders associated with a customer's email."""
         self.orders = [
             order for order in self.orders if order.customer_email != customer_email
         ]
         logging.info(f"All orders for customer '{customer_email}' have been deleted.")
-
-    def get_order_by_id(self, order_id):
-        """Retrieve an order by order ID."""
-        return next((order for order in self.orders if order.order_id == order_id), None)
-
-    def get_all_orders(self):
-        """Get a list of all orders."""
-        return self.orders

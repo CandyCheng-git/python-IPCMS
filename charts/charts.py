@@ -7,21 +7,20 @@ from datetime import datetime
 from matplotlib import pyplot as plt
 
 
+# Class:: Generate and manage charts.
 class ChartGenerator:
-    """Class to generate and manage charts."""
-
     def __init__(self, customer_manager, order_manager):
         self.customer_manager = customer_manager
         self.order_manager = order_manager
 
+    # Chart Function: Save the chart with the given title.
     def save_chart(self, fig, chart_title):
-        """Save the chart with the given title."""
         filename = f"{chart_title.replace(' ', '_').lower()}.png"
         fig.savefig(filename)
         logging.info(f'Chart "{filename}" has been created successfully.')
         plt.close(fig)
 
-    # Read Function display_charts: View a chart by selection
+    # Read Function: View a chart by selection
     def display_charts(self):
         while True:
             print(f"""
@@ -43,8 +42,8 @@ class ChartGenerator:
             else:
                 logging.error("Invalid choice. Please try again.")
 
+    # Chart Function: generate a bar chart.
     def gen_chart(self, data, labels, chart_title, xlabel, ylabel, export=False):
-        """Generate a bar chart."""
         fig, ax = plt.subplots()
         ax.bar(labels, data)
         ax.set_title(chart_title)
@@ -59,8 +58,8 @@ class ChartGenerator:
             plt.show()
         return fig, ax
 
+    # Chart Function: generate a bar chart of top-selling products.
     def gen_bar_chart_top_selling_products(self, export=False):
-        """Generate a bar chart of top-selling products."""
         product_sales = {}
         for order in self.order_manager.get_all_orders():
             for op in order.order_products:
@@ -87,8 +86,8 @@ class ChartGenerator:
             export
         )
 
+    # Chart Function: generate a bar chart of customer location distribution.
     def gen_customer_location_distribution_chart(self, export=False):
-        """Generate a bar chart of customer location distribution."""
         city_counts = {}
         for customer in self.customer_manager.get_all_customers():
             city = customer.city
@@ -109,8 +108,8 @@ class ChartGenerator:
             export
         )
 
+    # Chart Function: gGenerate a histogram chart of customer age distribution.
     def gen_customer_age_distribution_chart(self, export=False):
-        """Generate a histogram chart of customer age distribution."""
         customers = self.customer_manager.get_all_customers()
         if not customers:
             logging.info("No customer data available.")
@@ -142,7 +141,7 @@ class ChartGenerator:
             export
         )
 
-    # Export Function export_all_charts: Call all the gen chart functions as export
+    # Export Function: Call all the gen chart functions as export
     def export_all_charts(self):
         logging.info("\nExporting all charts as .png files...")
         self.gen_bar_chart_top_selling_products(export=True)

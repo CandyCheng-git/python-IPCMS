@@ -4,10 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4f4b9552-bf3f-4955-a81d-d94533734368" name="Changes" comment="Updated unitest - test_validators.py">
+    <list default="true" id="4f4b9552-bf3f-4955-a81d-d94533734368" name="Changes" comment="Updated unitest - test_reports.py">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authentication/authentication.py" beforeDir="false" afterPath="$PROJECT_DIR$/authentication/authentication.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/charts/charts.py" beforeDir="false" afterPath="$PROJECT_DIR$/charts/charts.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/controllers.py" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/controllers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/data.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/data.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/operations/create.py" beforeDir="false" afterPath="$PROJECT_DIR$/operations/create.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/operations/delete.py" beforeDir="false" afterPath="$PROJECT_DIR$/operations/delete.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/operations/export_files.py" beforeDir="false" afterPath="$PROJECT_DIR$/operations/export_files.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/operations/import_files.py" beforeDir="false" afterPath="$PROJECT_DIR$/operations/import_files.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/operations/read.py" beforeDir="false" afterPath="$PROJECT_DIR$/operations/read.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/operations/update.py" beforeDir="false" afterPath="$PROJECT_DIR$/operations/update.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/reports/reports.py" beforeDir="false" afterPath="$PROJECT_DIR$/reports/reports.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_reports.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_reports.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/validators.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/validators.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,24 +58,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python tests.Python tests in test_authentication.py.executor": "Run",
-    "Python tests.Python tests in test_charts.py.executor": "Run",
-    "Python tests.Python tests in test_controllers.py.executor": "Run",
-    "Python tests.Python tests in test_data.py.executor": "Run",
-    "Python tests.Python tests in test_models.py.executor": "Run",
-    "Python tests.Python tests in test_reports.py.executor": "Run",
-    "Python tests.Python tests in test_transformers.py.executor": "Run",
-    "Python tests.Python tests in test_utils.py.executor": "Run",
-    "Python tests.Python tests in test_validators.py.executor": "Run",
-    "Python.main.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/Candy/OneDrive/IT/CandyCheng-git/Fundamentals-of-Python-Program",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python tests.Python tests in test_authentication.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_charts.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_controllers.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_data.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_models.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_reports.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_transformers.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_utils.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_validators.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Candy/OneDrive/IT/CandyCheng-git/Fundamentals-of-Python-Program&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="IPCMS" />
@@ -241,8 +252,27 @@
       <option name="project" value="LOCAL" />
       <updated>1729054447060</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Updated unitest - test_reports.py">
+      <option name="closed" value="true" />
+      <created>1729055650134</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1729055650134</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <ignored-roots>
@@ -261,6 +291,7 @@
     <MESSAGE value="Updated unitest - test_transformers.py" />
     <MESSAGE value="Updated unitest - test_utils.py" />
     <MESSAGE value="Updated unitest - test_validators.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated unitest - test_validators.py" />
+    <MESSAGE value="Updated unitest - test_reports.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated unitest - test_reports.py" />
   </component>
 </project>

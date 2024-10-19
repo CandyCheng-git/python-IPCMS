@@ -17,9 +17,8 @@ from utils.transformers import DataTransformer
 logging.basicConfig(level=logging.INFO, format='%(message)s')
 
 
+# Class:: Main application class for the IPCMS system
 class IPCMSApp:
-    """Main application class for the IPCMS system."""
-
     def __init__(self, for_test_mode=False):
         # Create utility instances
         self.check_valid_method = CheckValidator()
@@ -106,8 +105,8 @@ class IPCMSApp:
             else:
                 logging.error("Access denied.")
 
+    # Load: Load data into controllers/managers
     def load_data(self):
-        """Load data into controllers/managers."""
         # Load customers
         for customer in self.enterprise_data.customers:
             try:
@@ -158,8 +157,8 @@ class IPCMSApp:
             except Exception as e:
                 logging.error(f"Error loading order '{order.order_id}' - {str(e)}")
 
+    # Read: Display the main menu and handle user choices
     def menu_page(self):
-        """Display the main menu and handle user choices."""
         menu_options = {
             '1': ("Create a new Customer", self.create_ops.create_new_customer),
             '2': ("Create Payslip", self.create_ops.create_payslip),
@@ -229,6 +228,7 @@ class IPCMSApp:
             else:
                 logging.error("Invalid choice. Please try again.")
 
+    # Read: Helper function of running the "View Customer" options in menu
     def menu_view_customers(self):
         while True:
             selected_customer = self.read_ops.display_customers()
@@ -243,6 +243,7 @@ class IPCMSApp:
             else:
                 break  # Exit the loop if no customer is selected
 
+    # Read: Helper function of running the "View Chart" options in menu
     def menu_display_charts(self):
         action = self.read_ops.display_charts()
         if action == 'top_selling_products':

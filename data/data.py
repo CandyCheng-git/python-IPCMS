@@ -3,21 +3,22 @@
 from models.models import Customer, Product, Order
 
 
+# Class:: Load and store initial data from the shop.
 class EnterpriseData:
-    """Load and store initial data from the shop."""
-
     def __init__(self, ipcms_data):
-        # Now EnterpriseData uses an existing IPCMSData instance
+        # Uses an existing IPCMSData by parameter
         self.col_widths = ipcms_data.init_col_widths()
         self.customers = self.load_customers()
         self.products = self.load_products()
         self.orders = self.load_orders()
 
+    # Read: Get required table's fields by category
     def get_required_fields(self, category):
         if category in self.col_widths:
             return list(self.col_widths[category].keys())
         return []
 
+    # Load: customer
     def load_customers(self):
         customers = []
         for data in self.customer_data():
@@ -25,6 +26,7 @@ class EnterpriseData:
             customers.append(customer)
         return customers
 
+    # load: products
     def load_products(self):
         products = []
         for data in self.products_data():
@@ -32,6 +34,7 @@ class EnterpriseData:
             products.append(product)
         return products
 
+    # load: orders
     def load_orders(self):
         orders = []
         for data in self.orders_data():
@@ -41,9 +44,9 @@ class EnterpriseData:
             orders.append(order)
         return orders
 
+    # staticmethod: customer data
     @staticmethod
     def customer_data():
-        # Replace this with actual data or data loading logic
         return [
             {
                 'first_name': 'Matthew',
@@ -287,9 +290,9 @@ class EnterpriseData:
             },
         ]
 
+    # staticmethod: product data
     @staticmethod
     def products_data():
-        # Replace this with actual data or data loading logic
         return [
             {
                 "product_id": "001",
@@ -365,9 +368,9 @@ class EnterpriseData:
             },
         ]
 
+    # staticmethod: order data
     @staticmethod
     def orders_data():
-        # Replace this with actual data or data loading logic
         return [
             {
                 "order_id": "PO0001",
@@ -1103,9 +1106,8 @@ class EnterpriseData:
         ]
 
 
+# Class:: Load and store initial data specific to the ERP system.
 class IPCMSData:
-    """Load and store initial data specific to the ERP system."""
-
     def __init__(self):
         self.welcome_message = "Welcome to the ERP System!"
         self.full_served_countries = self.load_full_served_countries()
@@ -1123,9 +1125,9 @@ class IPCMSData:
         self.victoria_tax_table = self.load_victoria_tax_table()
         self.payslip_table = self.load_payslip_table()
 
+    # staticmethod: Initialize column widths for tables.
     @staticmethod
     def init_col_widths():
-        """Initialize column widths for tables."""
         return {
             'customers': {
                 "first_name": 12, "last_name": 12, "dob": 12, "email": 20,
@@ -1180,6 +1182,7 @@ class IPCMSData:
             }
         }
 
+    # Load: full served countries
     def load_full_served_countries(self):
         full_served_countries = {}
         served_countries = self.served_countries()
@@ -1199,9 +1202,9 @@ class IPCMSData:
 
         return full_served_countries
 
+    # Load: employee login data
     @staticmethod
     def load_employee_login_dict():
-        """Load employee login data."""
         return {
             100000: {"Login Name": "admin", "Password": "admin123"},
             100001: {"Login Name": "jdoe", "Password": "e4a5Tc2m"},
@@ -1226,9 +1229,9 @@ class IPCMSData:
             100020: {"Login Name": "myoung", "Password": "Qs7tP4Wm"}
         }
 
+    # Load: currency conversion data
     @staticmethod
     def load_currency_conversion_table():
-        """Load currency conversion data."""
         return (
             {"Country": "Australia", "Curr Code": "AUD", "Rate to AUD": 1.0},
             {"Country": "Hong Kong", "Curr Code": "HKD", "Rate to AUD": 5.6},
@@ -1238,9 +1241,9 @@ class IPCMSData:
             {"Country": "India", "Curr Code": "INR", "Rate to AUD": 55.3}
         )
 
+    # Load: employee data with constraints
     @staticmethod
     def load_employee_data_with_constraints():
-        """Load employee data with constraints."""
         return [
             {
                 "EmployeeID": 100000,
@@ -1454,9 +1457,9 @@ class IPCMSData:
             }
         ]
 
+    # Load: Victoria tax table data
     @staticmethod
     def load_victoria_tax_table():
-        """Load Victoria tax table data."""
         return {
             (0, 18200.0, 0.0),
             (18201, 45000.0, 19.0),
@@ -1465,11 +1468,12 @@ class IPCMSData:
             (180001, None, 45.0)
         }
 
+    # Load: Initialize payslip table
     @staticmethod
     def load_payslip_table():
-        """Initialize payslip table."""
         return []
 
+    # staticmethod: served countries data
     @staticmethod
     def served_countries():
         return [
@@ -1481,6 +1485,7 @@ class IPCMSData:
             {"Country": "India", "Country Code": "IND", "Curr Code": "INR", "Rate to AUD": 55.3},
         ]
 
+    # staticmethod: served postcode format data
     @staticmethod
     def served_postcode_format():
         return {
@@ -1492,6 +1497,7 @@ class IPCMSData:
             "India": r'^\d{6}$',
         }
 
+    # Read: Generate customized customer table's headers
     def gen_customer_headers(self):
         headers = list(self.enterprise_data.col_widths['customers'].keys())
         if 'postcode' in headers:
@@ -1499,12 +1505,14 @@ class IPCMSData:
         headers.insert(0, "No.")
         return headers
 
+    # Read: Generate customized product table's headers
     def gen_product_headers(self):
         headers = list(self.enterprise_data.col_widths['products'].keys())
         headers[headers.index('product_id')] = 'pid'
         headers[headers.index('stock_quantity')] = 'qty'
         return headers
 
+    # Read: Generate customized order table's headers
     def gen_order_headers(self):
         headers = list(self.enterprise_data.col_widths['orders'].keys())
         return headers

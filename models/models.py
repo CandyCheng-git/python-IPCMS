@@ -3,9 +3,8 @@
 from utils.validators import CheckValidator
 
 
+# Class:: Customer object
 class Customer:
-    """A customer object."""
-
     def __init__(
             self,
             first_name,
@@ -31,9 +30,8 @@ class Customer:
         self.updated_at = updated_at
 
 
+# Class:: Product object
 class Product:
-    """A product object."""
-
     def __init__(
             self,
             product_id,
@@ -54,9 +52,8 @@ class Product:
         self.stock_quantity = int(stock_quantity) if validator.is_numeric(stock_quantity) else 0
 
 
+# Class:: Ordered Product object
 class OrderedProduct:
-    """An ordered product object."""
-
     def __init__(
         self, product_id, product_name, quantity, price_per_unit, total_price
     ):
@@ -67,9 +64,8 @@ class OrderedProduct:
         self.total_price = float(total_price)
 
 
+# Class:: Order object
 class Order:
-    """An order object."""
-
     def __init__(
             self,
             order_id,

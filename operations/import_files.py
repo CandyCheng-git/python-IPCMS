@@ -1,4 +1,4 @@
-# import.py
+# operations/import_files.py
 
 import csv
 import json
@@ -8,6 +8,7 @@ from utils.validators import CheckValidator
 from utils.transformers import DataTransformer
 
 
+# Class:: ALl operations of import
 class ImportOperations:
     def __init__(self, customer_manager, product_manager, order_manager, erp_data):
         self.customer_manager = customer_manager
@@ -17,7 +18,7 @@ class ImportOperations:
         self.check_valid_method = CheckValidator()
         self.transform_data_method = DataTransformer()
 
-    # Import Function read_csv: Read the csv and save the data by inputted object_name name
+    # Import: Read the csv and save the data by inputted object_name name
     def read_csv(self, object_name):
         assume_filename = "".join([object_name + 's', '.csv'])
         try:
@@ -96,32 +97,38 @@ class ImportOperations:
                                 continue
                             product_name = row['product_name'].strip()
                             if not product_name:
-                                logging.error(f"Product name is missing for ID '{product_id}'. Skipping this record.")
+                                logging.error(f"Product name is missing for ID '{product_id}'. "
+                                              f"Skipping this record.")
                                 continue
                             price = row['price'].strip()
                             if not self.check_valid_method.is_decimal(price):
-                                logging.error(f"Invalid price '{price}' for product '{product_name}'. Skipping this record.")
+                                logging.error(f"Invalid price '{price}' for product '{product_name}'. "
+                                              f"Skipping this record.")
                                 continue
                             price = float(price)
                             category = row['category'].strip()
                             if not category:
-                                logging.error(f"Category is missing for product '{product_name}'. Skipping this record.")
+                                logging.error(f"Category is missing for product '{product_name}'. "
+                                              f"Skipping this record.")
                                 continue
                             stock_quantity = row['qty'].strip()
                             if not self.check_valid_method.is_numeric(stock_quantity):
                                 logging.error(
-                                    f"Invalid stock quantity '{stock_quantity}' for product '{product_name}'. Skipping this record.")
+                                    f"Invalid stock quantity '{stock_quantity}' for product '{product_name}'. "
+                                    f"Skipping this record.")
                                 continue
                             stock_quantity = int(stock_quantity)
                             created_at = row['created_at'].strip()
                             created_at = self.transform_data_method.to_std_datetimeformat(created_at)
                             if not self.check_valid_method.is_datetime(created_at):
-                                logging.error(f"Invalid created datetime '{created_at}'. Skipping this record.")
+                                logging.error(f"Invalid created datetime '{created_at}'. "
+                                              f"Skipping this record.")
                                 continue
                             updated_at = row['updated_at'].strip()
                             updated_at = self.transform_data_method.to_std_datetimeformat(updated_at)
                             if not self.check_valid_method.is_datetime(updated_at):
-                                logging.error(f"Invalid updated datetime '{updated_at}'. Skipping this record.")
+                                logging.error(f"Invalid updated datetime '{updated_at}'. "
+                                              f"Skipping this record.")
                                 continue
                             # Add
                             self.product_manager.create_product(
@@ -137,7 +144,7 @@ class ImportOperations:
         except Exception as er_msg:
             logging.error(f"Error: importing {object_name} list - {str(er_msg)}")
 
-    # Import Function read_json: Read the JSON and save the data by inputted object_name name
+    # Import: Read the JSON and save the data by inputted object_name name
     def read_json(self, object_name):
         assume_filename = "".join([object_name + 's', '.json'])
         try:
@@ -155,8 +162,13 @@ class ImportOperations:
                                         f"Product with ID {ordered_product['product_id']} "
                                         f"does not exist. Skipping this product.")
                                     continue
-                                required_product_fields = ['product_id', 'product_name', 'quantity', 'price_per_unit',
-                                                           'total_price']
+                                required_product_fields = [
+                                    'product_id',
+                                    'product_name',
+                                    'quantity',
+                                    'price_per_unit',
+                                    'total_price'
+                                ]
                                 for field in required_product_fields:
                                     if field not in ordered_product:
                                         if field == 'price_per_unit':
@@ -168,7 +180,8 @@ class ImportOperations:
                                         else:
                                             logging.error(
                                                 f"Error: Missing required field '{field}' in product "
-                                                f"{ordered_product.get('product_name', '')}. Skipping this product.")
+                                                f"{ordered_product.get('product_name', '')}. "
+                                                f"Skipping this product.")
                                             continue
 
                             # Add or Edit
